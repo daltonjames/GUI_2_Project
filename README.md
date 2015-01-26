@@ -11,4 +11,13 @@
 # • • side column (trending, personal profile)
 #
 # • Personal Home - (K, J) 
-# • Forum Page (K, J)
+#
+# • Topics Page - start with no css attempt to see if it works at all
+#
+# • Create a thread page - will heavily talk to server
+# • • will add tags, title, description, first comment
+# • • (all data to be sent to databases) attempt to optimize (database schema)
+
+# • Inside Thread page - contains the ability to add comments
+# 
+# • wordfish api(future)
