@@ -5,6 +5,7 @@
 # • Login screen (D)
 #
 # • Main page - About Us, reason for site, sign up/login in top corner (E)
+# • • add remember me
 #
 # • For all pages that are not the pre logged in Main page
 # • • header (site navigation)
