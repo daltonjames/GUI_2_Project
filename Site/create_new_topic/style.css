@@ -22,6 +22,10 @@ form#new-topic div.wrapper input {
     width: 515px;
 }
 
+form#new-topic div.large input {
+    height: 100px;
+}
+
 p.temp {
     font-size: 30px;
     border: solid red 1px;
