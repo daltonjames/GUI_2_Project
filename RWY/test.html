@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Get AJAX Request</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+</head>
+<body>
+    <table id="info"></table>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $.get("test.php", function (data) {
+                console.log("Success!");
+                console.log(data);
+                parsed = JSON.parse(data);
+                console.log(parsed);
+                var addToStr;
+                for ( var i=0; i<parsed.length; i++ ) {
+                    addToStr = addToStr + "<tr>";
+                    addToStr = addToStr + "<td>" + parsed[i].username + "</td>";
+                    addToStr = addToStr + "</tr>";
+                }
+                $("#info").append(addToStr);
+            });
+        });
+    </script>
+</body>
+</html>

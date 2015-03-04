@@ -1,0 +1,316 @@
+TODAY
+J
+Jared Perreaultuploaded an item
+10:35 AM
+HTML
+SurveyAdder.html
+No recorded activity before February 26, 2015
+10 MB used (0%)
+Buy more storage
+All selections cleared SurveyAdder.htmlOpen
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Survey Tracker</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<style>
+		body{width: 100%;}
+		#body-wrapper{width: 50%; margin: 0 auto; text-align: center;}
+		#table-wrapper{width: 45%; margin: 0 auto; text-align: center;}
+		tr {border-bottom: solid black 1px;}
+		th {padding: 5px;}
+		td.A, td.B, td.C, td.D {width: 50px;}
+		button {margin-top: 15px;}
+		#survey-table tr {border: none; height: 35px;}
+		#survey-table td {width: 150px;}
+		input.hidden {display: none;}
+	</style>
+</head>
+<body>
+	<div id="body-wrapper">
+		<div id="table-wrapper">
+			<table id="results-table">
+				<thead>
+					<tr>
+						<th>Time Management Survey</th>
+					</tr>
+					<tr>
+						<th>Question Number</th>
+						<th class="answer">A</th>
+						<th class="answer">B</th>
+						<th class="answer">C</th>
+						<th class="answer">D</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="r1"> 					<!-- 1 -->
+						<td>1</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r2"> 					<!-- 2 -->
+						<td>2</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<td class="D">0</td>
+					</tr>
+					<tr class="r3"> 					<!-- 3 -->
+						<td>3</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<td class="D">0</td>
+					</tr>
+					<tr class="r4">  					<!-- 4 -->
+						<td>4</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r5">  					<!-- 5 -->
+						<td>5</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r6"> 					<!-- 6 -->
+						<td>6</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r7">  					<!-- 7 -->
+						<td>7</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<td class="D">0</td>
+					</tr>
+					<tr class="r8">  					<!-- 8 -->
+						<td>8</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r9">  					<!-- 9 -->
+						<td>9</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r10">  					<!-- 10 -->
+						<td>10</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r11">  					<!-- 11 -->
+						<td>11</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r12">  					<!-- 12 -->
+						<td>12</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r13">  					<!-- 13 -->
+						<td>13</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r14">  					<!-- 14 -->
+						<td>14</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+					<tr class="r15">  					<!-- 15 -->
+						<td>15</td>
+						<td class="A">0</td>
+						<td class="B">0</td>
+						<td class="C">0</td>
+						<!-- <td class="D">0</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  	Enter New Survey
+		</button>
+	</div>
+	<!--Enter Modal Here -->
+	<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Add a Survey</h4>
+				</div>
+				<div class="modal-body">
+					<div id="mod-table-wrapper">
+						<form id="survey-form">
+							<table id="survey-table">
+								<tr>
+									<td>Question 1:</td>
+									<td><input type="radio" name="q1" value="A" required/>A</td>
+									<td><input type="radio" name="q1" value="B"/>B</td>
+									<td><input type="radio" name="q1" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q1" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 2:</td>
+									<td><input type="radio" name="q2" value="A" required/>A</td>
+									<td><input type="radio" name="q2" value="B"/>B</td>
+									<td><input type="radio" name="q2" value="C"/>C</td>
+									<td><input type="radio" name="q2" value="D"/>D</td>
+								</tr>
+								<tr>
+									<td>Question 3:</td>
+									<td><input type="radio" name="q3" value="A" required/>A</td>
+									<td><input type="radio" name="q3" value="B"/>B</td>
+									<td><input type="radio" name="q3" value="C"/>C</td>
+									<td><input type="radio" name="q3" value="D"/>D</td>
+								</tr>
+								<tr>
+									<td>Question 4:</td>
+									<td><input type="radio" name="q4" value="A" required/>A</td>
+									<td><input type="radio" name="q4" value="B"/>B</td>
+									<td><input type="radio" name="q4" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q4" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 5:</td>
+									<td><input type="radio" name="q5" value="A" required/>A</td>
+									<td><input type="radio" name="q5" value="B"/>B</td>
+									<td><input type="radio" name="q5" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q5" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 6:</td>
+									<td><input type="radio" name="q6" value="A" required/>A</td>
+									<td><input type="radio" name="q6" value="B"/>B</td>
+									<td><input type="radio" name="q6" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q6" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 7:</td>
+									<td><input type="radio" name="q7" value="A" required/>A</td>
+									<td><input type="radio" name="q7" value="B"/>B</td>
+									<td><input type="radio" name="q7" value="C"/>C</td>
+									<td><input type="radio" name="q7" value="D"/>D</td>
+								</tr>
+								<tr>
+									<td>Question 8:</td>
+									<td><input type="radio" name="q8" value="A" required/>A</td>
+									<td><input type="radio" name="q8" value="B"/>B</td>
+									<td><input type="radio" name="q8" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q8" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 9:</td>
+									<td><input type="radio" name="q9" value="A" required/>A</td>
+									<td><input type="radio" name="q9" value="B"/>B</td>
+									<td><input type="radio" name="q9" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q9" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 10:</td>
+									<td><input type="radio" name="q10" value="A" required/>A</td>
+									<td><input type="radio" name="q10" value="B"/>B</td>
+									<td><input type="radio" name="q10" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q10" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 11:</td>
+									<td><input type="radio" name="q11" value="A" required/>A</td>
+									<td><input type="radio" name="q11" value="B"/>B</td>
+									<td><input type="radio" name="q11" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q11" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 12:</td>
+									<td><input type="radio" name="q12" value="A" required/>A</td>
+									<td><input type="radio" name="q12" value="B"/>B</td>
+									<td><input type="radio" name="q12" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q12" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 13:</td>
+									<td><input type="radio" name="q13" value="A" required/>A</td>
+									<td><input type="radio" name="q13" value="B"/>B</td>
+									<td><input type="radio" name="q13" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q13" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 14:</td>
+									<td><input type="radio" name="q14" value="A" required/>A</td>
+									<td><input type="radio" name="q14" value="B"/>B</td>
+									<td><input type="radio" name="q14" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q14" value="D"/>D</td> -->
+								</tr>
+								<tr>
+									<td>Question 15:</td>
+									<td><input type="radio" name="q15" value="A" required/>A</td>
+									<td><input type="radio" name="q15" value="B"/>B</td>
+									<td><input type="radio" name="q15" value="C"/>C</td>
+									<!-- <td><input type="radio" name="q15" value="D"/>D</td> -->
+								</tr>
+							</table>
+							<input type="submit" id="submit-button" class="hidden"/>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        			<button type="button" id="add-survey" class="btn btn-primary">Add Survey</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready( function() {
+
+			$("#survey-form").submit( function(event) {
+				event.preventDefault();
+				
+				var result = $(this).serializeArray();
+
+				for( var i=1; i<=result.length; i++ ) {
+					var qResult = result[i-1]["value"];
+					var qTableRow = $("#results-table tr.r" + i);
+					var qTdElement = qTableRow.find("td." + qResult);
+					var qOldVal = parseInt(qTdElement.text());
+					qTdElement.text((qOldVal+1).toString());
+				}
+
+				$(this).trigger("reset");
+			});
+			
+			$("#add-survey").click( function() {
+				//trigger click instead of submit so html5 required attribute works
+				$("#submit-button").trigger("click");
+			});
+
+		}); //end of doc.ready
+	</script>
+</body>
+</html>
