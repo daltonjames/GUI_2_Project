@@ -63,14 +63,14 @@ $(document).ready(function() {
 					}
 					else
 					{
-						$.get( "page1.php", { username: $("#Username").val() } ).done(function( data ) {
+						$.get( "page1.php", formData ).done(function( data ) {
 							console.log("data from page1 = " + data );
 						});
 						
 						
 						var url = window.location.href;
 						url = url.replace("sign_up", "home");
-						//window.location = url;
+						window.location = url;
 					}
 				},	
 			});
