@@ -24,7 +24,8 @@ ul {
 	border: solid red 1px;
 }
 #content {
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 	margin-top: 25px;
 }
 #left-panel {
@@ -43,6 +44,15 @@ div.post-background {
 	background-color: white;
 	padding: 3px;
 	border-radius: 5px;
+}
+span.post-background {
+	background-color: white;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-right: 8px;
+	padding-left: 3px;
+	border-radius: 5px;
+	text-decoration: underline;
 }
 #new-comment {
 	overflow: auto;

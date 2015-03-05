@@ -20,7 +20,7 @@
 		die( "Error with INSERT" );
     }
 	
-	echo "PHP Success!"
+	echo "PHP Success! Post Id = " . $id;
 	#$params = json_decode(file_get_contents('php://input'), true);
 	#echo $params;
 ?>

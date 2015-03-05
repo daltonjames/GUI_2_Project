@@ -37,3 +37,14 @@ div.add-new-wrapper a {
 	display: inline-block;
 	float: right;
 }
+div.clickable {
+	background-color: white;
+	border: solid gray 1px;
+	border-radius: 5px;
+	padding: 5px;
+}
+div.clickable:hover {
+	border: solid DarkBlue 2px;
+	background-color: #E6FFFF;
+	margin: -1px;
+}

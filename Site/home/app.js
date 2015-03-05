@@ -14,5 +14,11 @@ App.controller("AppCtrl", function($scope,$http) {
 			$scope.error = error;
 		});
 
-	//TODO: Add on click event to handle navigation to 
+	//TODO: Add on click event to handle navigation to
+	$scope.navigate = function($event) {
+		var url = "../view_topic?id=";
+	    var idCode = $event.currentTarget.getAttribute('data-idcode');
+		url = url + idCode;
+		window.location = url;
+	}
 });

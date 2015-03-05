@@ -1,6 +1,11 @@
 <?php
+	if ( !(isset( $_GET['id']) ) ){
+		die("id value not received!");
+	}
+
     $username = "jperreau";
     $password = "jp6249";
+	$idCode = $_GET['id'];
 
     #username and database name are the same for me
     $database = new mysqli( 'localhost', $username, $password, $username );
@@ -8,21 +13,18 @@
        die( '<p>Unable to connect to database [' . $database->connect_error . ']</p>' );
     }
 
-   $select = "SELECT * FROM alpha_topic_resevoir";
+   $select = 'SELECT * FROM alpha_topic_resevoir WHERE id= ' . intval($idCode);
     if ( ! $result = $database->query( $select ) ) {
-       die( '<p>Error retreving data [' . $database->error . ']</p>' );
+       die( '<p>Error retrieving data [' . $database->error . ']</p>' );
     }
    $postData = array();
    while ( $row = $result->fetch_assoc() ) {
        $postData[] = $row;
    }
-
-    #retrieve the comments as well
-    $getComments = $postData[0]["id"];
 	
-	$select = "SELECT * FROM post" . $getComments . "_comments";
+	$select = "SELECT * FROM post" . $idCode . "_comments";
     if ( ! $result = $database->query( $select ) ) {
-       die( '<p>Error retreving data [' . $database->error . ']</p>' );
+       die( '<p>Error retrieving data [' . $database->error . ']</p>' );
     }
    $commentData = array();
    while ( $row = $result->fetch_assoc() ) {
@@ -32,5 +34,6 @@
 	$arr = array();
 	$arr[] = $postData;
 	$arr[] = $commentData;
+	$arr[] = $idCode;
     echo json_encode($arr);
 ?>

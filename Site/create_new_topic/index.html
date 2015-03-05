@@ -5,43 +5,35 @@
     <title>Create A New Topic</title>
 
     <!--Link Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="createNewTopic.js"></script>
 </head>
 <body>
 <div id="body-wrapper">
-    <div class="header">
-        <!-- Header Code
-        <img src="" class="logo"/>
-        <form id="search-tags" action="javascript:void(0)">
-            <input type="search" placeholder="Search Tags..." form="search-tags"/>
-        </form>
-        <h1>Red, White &amp; Youth</h1>
-        <a href="sign_up">Sign Up</a>
-        **Bootstrap Modal Here**
-        <a href="">Login</a>
-        -->
-        <p class="temp">HEADER HERE!</p>
-    </div>
+    <?php include ("../static/header/header.html"); ?>
     <div id="content">
         <h2>Create A New Topic</h2>
         <div id="form-wrapper" class="wrapper">
             <form id="new-topic" action="javascript:void(0)">
                 <div id="title-wrapper" class="wrapper">
                     <label for="topic-title">Topic Title</label>
-                    <span><input id="topic-title" type="text" minlength="3" required="required"/></span>
+                    <span><input id="topic-title" name="topic-title" value="Topic Title" type="text" minlength="3" required="required"/></span>
                 </div>
                 <div id="description-wrapper" class="wrapper large">
                     <label for="short-desc">Short Description</label>
-                    <input id="short-desc" type="text" maxlength="250" minlength="1" required="required"/>
+                    <input id="short-desc" name="short-desc" value="Short Description" type="text" maxlength="250" minlength="1" required="required"/>
                 </div>
                 <div id="tags-wrapper" class="wrapper">
                     <label for="tags-list">Tags</label>
-                    <input id="tags-list" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" required="required"/>
+                    <input id="tags-list" name="tags-list" value="Tags" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" required="required"/>
                     <!-- Add regular expressions formatter to check for tag1, tag2, tag3 pattern with pattern attribute -->
                 </div>
                 <div id="opening-wrapper" class="wrapper large">
                     <label for="opening-point">Opening Statement</label>
-                    <input id="opening-point" type="text" maxlength="2000" minlength="1" required="required"/>
+                    <input id="opening-point" name="opening-point" value="Opening Statement" type="text" maxlength="2000" minlength="1" required="required"/>
                 </div>
                 <button id="preview" form="form-wrapper">Preview</button>
                 <button id="spell-check" form="form-wrapper">Spell Check</button>

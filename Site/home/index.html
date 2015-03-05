@@ -20,7 +20,7 @@
 						<p>Featured | Newest | Unanswered (Filters Coming soon!)</p>
 					</div>
 					<div class="add-new-wrapper">
-						<a href="link" class="btn">Create a New Topic</a>
+						<a href="../create_new_topic" class="btn">Create a New Topic</a>
 					</div>
 					<div id="topic-list">
 						<ul ng-model="topicData">
@@ -31,12 +31,14 @@
 										<p>Views</p>
 									</div>
 									<div class="col-md-9"> <!-- TODO: Add onClick function to navigate to view topics page -->
-										<p>{{topic.title}}</p>
-										<div class="topic-desc">
-											<p>{{topic.opening_comment}}</p>
-										</div>
-										<div class="tag-list">
-											<p>Tag1, Tag2, Tag3, Tag4...</p>
+										<div class="clickable" data-idcode={{topic.id}} ng-click="navigate($event)">
+											<p>{{topic.title}}</p>
+											<div class="topic-desc">
+												<p>{{topic.opening_comment}}</p>
+											</div>
+											<div class="tag-list">
+												<p>Tag1, Tag2, Tag3, Tag4...</p>
+											</div>
 										</div>
 									</div>
 								</div>

@@ -9,7 +9,11 @@ App.controller("AppCtrl", function( $scope, $http) {
 	$scope.topicData = {};
 	$scope.commentsData = {};
 	$scope.error = "";
-	$http.get( "topic_content.php" ).
+	
+	var idCode = window.location.search.substring(1);
+	idCode = idCode.split("=")[1];
+	
+	$http.get( "topic_content.php?id=" + idCode ).
 		success( function( data ) {
 			console.log(data);
 			$scope.topicData = data[0][0];
@@ -52,15 +56,18 @@ App.controller("AppCtrl", function( $scope, $http) {
 $(document).ready( function() {
 	
 	$("#add-comment").submit( function() {
-		var commentStr = $(this).find("textarea").val()
+		var commentStr = $(this).find("textarea").val();
 		commentStr = $.trim(commentStr);
 		var commentObj = { commentString : commentStr, postIndex : null, poster : 'K2XDubz' };
 		console.log(commentObj);
 		
+		var postId = window.location.search.substring(1);
+		postId = postId.split("=")[1];
+		
 		$.ajax({
 			type: 'POST',
 			url: 'add_comment.php',
-			data: { comment : commentStr, id : '00000001', user : 'K2XDubz' },
+			data: { comment : commentStr, id : postId, user : 'K2XDubz' },
 			success: function(data) {
 				console.log("Success!");
 				console.log(data);
