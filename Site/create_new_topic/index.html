@@ -20,20 +20,20 @@
             <form id="new-topic" action="javascript:void(0)">
                 <div id="title-wrapper" class="wrapper">
                     <label for="topic-title">Topic Title</label>
-                    <span><input id="topic-title" name="topic-title" value="Topic Title" type="text" minlength="3" required="required"/></span>
+                    <span><input id="topic-title" name="topic-title" type="text" minlength="3" required="required"/></span>
                 </div>
                 <div id="description-wrapper" class="wrapper large">
                     <label for="short-desc">Short Description</label>
-                    <input id="short-desc" name="short-desc" value="Short Description" type="text" maxlength="250" minlength="1" required="required"/>
+                    <input id="short-desc" name="short-desc"  type="text" maxlength="250" minlength="1" required="required"/>
                 </div>
                 <div id="tags-wrapper" class="wrapper">
                     <label for="tags-list">Tags</label>
-                    <input id="tags-list" name="tags-list" value="Tags" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" required="required"/>
+                    <input id="tags-list" name="tags-list" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" required="required"/>
                     <!-- Add regular expressions formatter to check for tag1, tag2, tag3 pattern with pattern attribute -->
                 </div>
                 <div id="opening-wrapper" class="wrapper large">
                     <label for="opening-point">Opening Statement</label>
-                    <input id="opening-point" name="opening-point" value="Opening Statement" type="text" maxlength="2000" minlength="1" required="required"/>
+                    <input id="opening-point" name="opening-point" type="text" maxlength="2000" minlength="1" required="required"/>
                 </div>
                 <button id="preview" form="form-wrapper">Preview</button>
                 <button id="spell-check" form="form-wrapper">Spell Check</button>
