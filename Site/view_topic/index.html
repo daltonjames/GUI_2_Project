@@ -1,0 +1,86 @@
+<html ng-app="viewTopic">
+  <head>
+    <meta charset='UTF-8'>
+    <title>View Topic</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+	<link type="text/css" rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+	<div id="body-wrapper">
+		<?php include ("../static/header/header.html"); ?>
+		<div id="content">
+			<div ng-controller="AppCtrl">
+				<div id="left-panel">
+					<div id="navigation">
+						<span><a href="../home">Home</a> |</span>
+						<span>Link |</span>
+						<span>Link</span>
+					</div>
+					<div id="title">
+						<h1>{{topicData.title}}</h1>
+					</div>
+					<div id="description-box">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<p>{{topicData.description}}</p>
+							</div>
+							<div class="panel-footer">
+								<p>Tag1, Tag2, Tag3, Tag4, etc...</p>
+							</div>
+						</div>
+					</div>
+					<div id="original-post-box" class="well well-sm">
+						<div class="row">
+							<div class="col-md-3 post-left">
+								<div class="post-background">
+									<p>{{topicData.username}}</p>
+									<p>Account Info</p>
+								</div>
+							</div>
+							<div class="col-md-9 post-right">
+								<div class="post-background">
+									<p>{{topicData.opening_comment}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="comment-container">
+						<ul ng-model="commentsData">
+							<li ng-repeat="comment in commentsData | orderBy:'postIndex'" class="well well-sm" >
+								<div class="row">
+									<div class="col-md-3 post-left">
+										<div class="post-background">
+											<p>{{comment.poster}}</p>
+										</div>
+									</div>
+									<div class="col-md-9 post-right">
+										<div class="post-background">
+											<p>{{comment.commentString}}</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li id="new-comment" class="well well-sm">
+								<!-- <form id="add-comment" action="javascript:void(0)"> -->
+								<form id="add-comment" ng-submit="addComment()">
+									<textarea rows="2" cols="100" placeholder="Add a comment..." name="comment" form="add-comment" ng-model="newCommentStr" required></textarea>
+									<input type="submit" class="btn btn-info btn-sm" value="Add Comment" />
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="right-panel">
+					<p>Right Panel:</p>
+					<p>Account Info</p>
+					<p>Tag Map</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
