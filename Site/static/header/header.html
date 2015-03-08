@@ -46,7 +46,8 @@
 
 				<p class="navbar-text">Red White and Youth</p>
 
-				<a href ="http://weblab.cs.uml.edu/~jperreau/rwy/testing/final_test/sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>
+				<!-- TODO make a button that goes to sign_up via relative path name-->
+				<a href ="./sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>
 
 				<button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Login</button>
 
@@ -71,11 +72,11 @@
 					 <form id="login_form" action="javascript:void(0)">
 						<div class="form_ele">
 							<label>Username</label>
-							<input id="Username" name="Username" type="text" tabindex="1" required/>
+							<input id="Username" name="Username" type="text" tabindex="1" required value="u_name" />
 						</div>
 						<div class="form_ele">
 							<label>Password</label>
-							<input id="Ipassword" name="Ipassword" type="password" tabindex="2" required/>
+							<input id="Ipassword" name="Ipassword" type="password" tabindex="2" required value="pw" />
 						</div>	
 					
 						<input type="submit" id="submit-button" class="hidden"/>						
@@ -98,6 +99,10 @@
 
 			$("#login_form").submit( function(event) {
 			
+				var newUrl = window.location.href;
+				newUrl = url.split("sign_up")[0];
+				newUrl = newUrl + "static/header/validate_login.php";
+			
 				var $this = $(this);
 				formData = $this.serialize();
 				
@@ -106,16 +111,14 @@
 				console.log( "Username = " + $("#Username").val() );
 				console.log( "password = " + $("#Ipassword").val() );
 				
-				$.get("http://weblab.cs.uml.edu/~jperreau/rwy/testing/final_test/validate_login.php", formData, function (data) {
+				$.get(newUrl, formData, function (data) {
 					console.log("success");
 					
 					console.log("data = " + data);
 					
 					var url = window.location.href;
-					url = url.split("final_test")[0];
-					//url = url.replace("/sign_up", "");
-					url = url + "final_test/home";
-					console.log(url);
+					url = url.replace("sign_up", "");
+					url = url + "home";
 					window.location = url;
 				});
 				

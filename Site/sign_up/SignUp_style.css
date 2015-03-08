@@ -8,45 +8,33 @@ Kyle White, Kyle_White@student.uml.edu
  */
 
 
-/*effects the entire body*/
-body{
-    margin-top: 30px;
-    margin-left: 10px;
-}
 
-
-
-
-
-/*effects spacing and look of entire form*/
-#form_wrapper{
+/*styles spacing and look of entire form*/
+div.content #form_wrapper{
     padding: 5px;
     border: solid black 3px;
     display: inline-block;
 }
 
-/*effects spacing of the table*/
-#image{
-    display: inline-block; 
+/*styles spacing of the table*/
+div.content #image{
     margin-left: 20px;
+	float: right;
 }
 
-input{
+/*styles the submit button*/
+div.content input{
 	float: right;
 	margin-left: 5px;
 }
 
 /*wraps each textbox and its description in a div to keep them together*/
-.form_ele{
+div.content .form_ele{
     display: block;
     margin-bottom: 9px;
 }
 
-
-
-
-
-
-
-
-
+/*styles the error message*/
+div.content .error{
+	color: red;
+}
