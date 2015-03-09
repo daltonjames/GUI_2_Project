@@ -12,6 +12,14 @@
 	<meta charset="UTF-8">
 </head>
 <body>
+	<style>
+		#modal-error {
+			display: none;
+			color: red;
+			text-align: center;
+			margin-top: 25px;
+		}
+	</style>
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -47,7 +55,7 @@
 				<p class="navbar-text">Red White and Youth</p>
 
 				<!-- TODO make a button that goes to sign_up via relative path name-->
-				<a href ="./sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>
+				<a id="sign-up-btn" href ="./sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>
 
 				<button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Login</button>
 
@@ -82,6 +90,7 @@
 						<input type="submit" id="submit-button" class="hidden"/>						
 
 					</form>
+					<p id="modal-error">Invalid Username or Password!</p>
 				
 				</div>
 			
@@ -97,11 +106,18 @@
 	<script type="text/javascript">
 		$(document).ready( function() {
 
+			var newUrl = "./static/header/validate_login.php";
+			var page = window.location.href;
+			//When page is Sign Up page (NOT public page)
+			if ( page.search("sign_up") !== -1 ) {
+				//change Sign Up Button href
+				$("#sign-up-btn").attr("href", "../sign_up");
+				
+				//change relative path of validate php script
+				newUrl = "." + newUrl;
+			}
+
 			$("#login_form").submit( function(event) {
-			
-				var newUrl = window.location.href;
-				newUrl = url.split("sign_up")[0];
-				newUrl = newUrl + "static/header/validate_login.php";
 			
 				var $this = $(this);
 				formData = $this.serialize();
@@ -116,10 +132,18 @@
 					
 					console.log("data = " + data);
 					
-					var url = window.location.href;
-					url = url.replace("sign_up", "");
-					url = url + "home";
-					window.location = url;
+					//looks for the string "no match"
+					//which is what the php script will return if
+					//the login credentials are invalid
+					if ( data.search("no match") === -1 ) {
+						var url = window.location.href;
+						url = url.replace("/sign_up", "");
+						url = url + "home";
+						window.location = url;
+					}
+					//On invalid login
+					$("#modal-error").show();
+					
 				});
 				
 				

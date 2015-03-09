@@ -58,7 +58,7 @@ $(document).ready( function() {
 	$("#add-comment").submit( function() {
 		var commentStr = $(this).find("textarea").val();
 		commentStr = $.trim(commentStr);
-		var commentObj = { commentString : commentStr, postIndex : null, poster : 'K2XDubz' };
+		var commentObj = { commentString : commentStr, postIndex : '999999', poster : 'K2XDubz' };
 		console.log(commentObj);
 		
 		var postId = window.location.search.substring(1);

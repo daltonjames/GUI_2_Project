@@ -65,16 +65,15 @@
 
 <script>
 	$(document).ready(function(){
-	
-		
+
 		$.ajax({
 			type: "GET",
 			url: "../static/header/username.php",
-			success: function(data){
-			console.log("header data = " + data);
-			$("#signedInAs").append(data);
+			success: function(data)	{
+				console.log("header data = " + data);
+				$("#signedInAs").append(data);
 			}
-		})
+		});
 		/*
 		$(".phpStuff").click(function(){
 			$ajax({

@@ -51,7 +51,7 @@
 					</div>
 					<div id="comment-container">
 						<ul ng-model="commentsData">
-							<li ng-repeat="comment in commentsData | orderBy:'postIndex'" class="well well-sm" >
+							<li ng-repeat="comment in commentsData | orderBy:'+postIndex'" class="well well-sm" >
 								<div class="row">
 									<div class="col-md-3 post-left">
 										<div class="post-background">
