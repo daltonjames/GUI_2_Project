@@ -1,22 +1,17 @@
 body  {
-  font-family: Verdana, Arial, Helvetica, sans-serif ;
-  font-size: 10pt ;
+	width: 100%;
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	font-size: 10pt ;
 }
 ul {
 	list-style-type: none;
 }
 #body-wrapper {
-	width: 70%;
-	margin: 0px auto;
-}
-#header-wrapper{
-	height: 100px;
-	text-align: center;
-	border: solid red 1px;
-	margin-bottom: 8px;
+	width: 100%;
 }
 #content {
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 	margin-top: 25px;
 }
 #left-panel {
@@ -36,6 +31,7 @@ div.add-new-wrapper {
 div.add-new-wrapper a {
 	display: inline-block;
 	float: right;
+	margin-bottom: 10px;
 }
 div.clickable {
 	background-color: white;

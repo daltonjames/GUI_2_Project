@@ -9,11 +9,11 @@
 	
 	$uName = $_GET['Username'];
 	$pWord = $_GET['Ipassword'];
-	echo "\n";
-	echo $uName;
-	echo "\n";
-	echo $pWord;
-	echo "\n";
+	#echo "\n";
+	#echo $uName;
+	#echo "\n";
+	#echo $pWord;
+	#echo "\n";
 	$select = 'SELECT * FROM alpha_acct WHERE username ="' . $uName . '" AND password = "' . $pWord . '"';
 	#$select = 'SELECT * FROM alpha_acct WHERE username = "u_name" AND password = "pw"';
 	if ( ! $result = $database->query( $select ) ) {

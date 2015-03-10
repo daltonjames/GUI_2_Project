@@ -5,11 +5,14 @@ App.controller("AppCtrl", function($scope,$http) {
 	$scope.topicData = {};
 	$scope.error = "";
 
+	//GET retrieves data from php to display for each topic
 	$http.get( "topic_list.php" ).
 		success( function(data) {
 			console.log(data);
+			//updates controller data to trigger view update
 			$scope.topicData = data;
 		}).error( function(error) {
+			//included for debugging but not shown on page
 			console.log("GET ERROR");
 			$scope.error = error;
 		});

@@ -8,29 +8,51 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
 	<link type="text/css" rel="stylesheet" href="style.css"></link>
+	
+	<!-- 
+        Dalton James, Dalton_James@student.uml.edu   
+        Jared Perreault, Jared_Perreault@student.uml.edu
+        Kyle White, Kyle_White@student.uml.edu
+
+        UMass Lowell Computer Science
+        Students in Jesse Heines GUI Programming II
+        
+        File: home/index.html
+        
+        Description: Displays user created topics and some info about them
+        
+        -->
+	
 </head>
 <body ng-app="topicList">
 	<div id="body-wrapper">
+		<!--php include adds the header-->
 		<?php include ("../static/header/signedInHeader.html"); ?>
-		<div cid="content">
+		<div id="content">
 			<div ng-controller="AppCtrl">
 				<div id="left-panel">
 					<h1>Topics</h1>
 					<div id="sort-options">
-						<p>Featured | Newest | Unanswered (Filters Coming soon!)</p>
+						<!-- <p>Featured | Newest | Unanswered (Filters Coming soon!)</p> -->
+						<a href="#Coming-Soon!">Featured</a><span> | </span>
+						<a href="#Coming-Soon!">Newest</a><span> | </span>
+						<a href="#Coming-Soon!">Unanswered</a>
 					</div>
 					<div class="add-new-wrapper">
-						<a href="../create_new_topic" class="btn">Create a New Topic</a>
+						<!--button to allow user to create a new topic-->
+						<a href="../create_new_topic" class="btn btn-info">Create a New Topic</a>
 					</div>
 					<div id="topic-list">
 						<ul ng-model="topicData">
-							<li ng-repeat="topic in topicData" class="well well-sm">
+
+							<!--loop through each topic in database to show info on each of them-->
+							<li ng-repeat="topic in topicData | orderBy:'+id'" class="well well-sm">
 								<div class="row">
 									<div class="col-md-3">
 										<p>Comments</p>
 										<p>Views</p>
 									</div>
-									<div class="col-md-9"> <!-- TODO: Add onClick function to navigate to view topics page -->
+									<div class="col-md-9">
 										<div class="clickable" data-idcode={{topic.id}} ng-click="navigate($event)">
 											<p>{{topic.title}}</p>
 											<div class="topic-desc">
@@ -38,24 +60,28 @@
 											</div>
 											<div class="tag-list">
 												<p>Tag1, Tag2, Tag3, Tag4...</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
+											</div> <!--end tag-list div-->
+										</div> <!--end clickable div-->
+									</div> <!--end partial row div-->
+								</div> <!--end row div-->
+							</li> <!--end angular loop-->
+						</ul> <!--end topic list-->
+					</div> <!--end topic-list div-->
+					
+					<!--add bottom nav button for creating new topic-->
 					<div class="add-new-wrapper">
-						<a href="link" class="btn">Create a New Topic</a>
+						<a href="link" class="btn btn-info">Create a New Topic</a>
 					</div>
-				</div>
+				</div> <!--end left-panel div-->
+				
+				<!--right panel contains only additional features-->
 				<div id="right-panel">
 					<p>Right Panel:</p>
 					<p>Account Info</p>
 					<p>Tag Map</p>
 				</div>
-			</div>
-		</div>
-	</div>
-</body>
+			</div> <!--end AppCtrl div-->
+		</div> <!--end content div-->
+	</div> <!--end body-wrapper div-->
+</body> 
 </html>

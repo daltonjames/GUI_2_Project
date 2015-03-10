@@ -1,95 +1,96 @@
 <html>
-
-<!-- <head lang="en">
-	<meta charset="UTF-8">
-	<title>header</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-</head> -->
-<head lang="en">
-	<meta charset="UTF-8">
-</head>
-<body>
-
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Brand</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-				<form class="navbar-form navbar-left" role="search">
-
-					<div class="col-lg-6">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search coming soon">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">search</button>
-							</span>
+<style>
+	#header-wrapper {
+		width: 100%;
+		background-color: #EEE;
+	}
+	div.header-content {
+		width: 80%;
+		margin: 0 auto;
+	}
+	#home-link {
+		font-size: 20px;
+		color: inherit;
+		text-decoration: none;
+	}
+	#user-info {
+		margin-top: 7px;
+		margin-left: -25px;
+	}
+	#signedInAs{
+		display:block;
+		text-align: center;
+	}
+	</style>
+<div id="header-wrapper">
+	<div class="header-content">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Brand</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbar-collapse-1">
+					<div class="row">
+						<div class="col-md-4">
+							<form class="navbar-form navbar-left" role="search">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search coming soon">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button">Search</button>
+									</span>
+								</div>
+							</form>
 						</div>
-						<!-- /input-group -->
+						<div class="col-md-4">
+							<p class="navbar-text">
+								<a id="home-link" href="../home">Red, White & Youth</a>
+							</p>
+						</div>
+						<p id="user-info" class="navbar-text">Signed in as <a href="#" class="navbar-link" id="signedInAs">jpDizzle</a></p>
+						<button type="button" class="btn btn-default navbar-btn" id="phpStuff" >Logout</button>
 					</div>
-					<!-- /.col-lg-6 -->
-
-				</form>
-
-				<h3 class="navbar-text">Red White and Youth</h3>
-
-				<!--<a href ="http://weblab.cs.uml.edu/~jperreau/rwy/testing/final_test/sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>-->
-
-				<a href="http://weblab.cs.uml.edu/~djames/RWY/Site/" type="button" class="btn btn-default navbar-btn" class="phpStuff" >Logout</a>
-				<!--<button type="button" class="btn btn-default navbar-btn" class="phpStuff" >Logout</button>-->
-				
-				<p class="navbar-text ">Signed in as <a href="#" class="navbar-link" id="signedInAs"></a></p>
-
+				</div>
+				<!-- /.navbar-collapse -->
 			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
- 
+			<!-- /.container-fluid -->
+		</nav>
 	</div>
-	
-</body>
+	<script>
+		$(document).ready(function(){
 
-<script>
-	$(document).ready(function(){
-
-		$.ajax({
-			type: "GET",
-			url: "../static/header/username.php",
-			success: function(data)	{
-				console.log("header data = " + data);
-				$("#signedInAs").append(data);
-			}
-		});
-		/*
-		$(".phpStuff").click(function(){
-			$ajax({
+			$.ajax({
 				type: "GET",
-				url: "logout.php",
-				success: function(data){
-			
-					console.log("logout stuff");
-				}	
-				
-					
+				url: "../static/header/username.php",
+				success: function(data)	{
+					console.log("header data = " + data);
+					$("#signedInAs").append(data);
+				}
 			});
-			var url = window.location.href;
-					url = url.replace("home", "");
-					window.location = url;
-		});*/
-	});
-</script>
+			
+			$("#phpStuff").click(function(){
+			
+				$.ajax({
+					type: "GET",
+					url: "../static/header/logout.php",
+					success: function(data){
+				
+						console.log("logout stuff");
+					}	
+					
+						
+				});
+				
+				window.location.href = '../';
+			});
+		});
+	</script>
+</div>
 </html>

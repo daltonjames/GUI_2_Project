@@ -15,13 +15,7 @@ ul {
 	list-style-type: none;
 }
 #body-wrapper {
-	width: 70%;
-	margin: 0px auto;
-}
-#header{
-	height: 100px;
-	text-align: center;
-	border: solid red 1px;
+	width: 100%;
 }
 #content {
 	width: 80%;
@@ -38,6 +32,19 @@ ul {
 	display: inline-block;
 	float: right;
 	border: solid black 1px;
+}
+#title {
+	position: relative;
+	overflow: auto;
+	margin-bottom: 10px;
+}
+#title h1 {
+	display: inline-block;
+}
+#back-btn {
+	display: inline-block;
+	position: absolute;
+	right: 0; bottom: 0;
 }
 div.post-background {
 	width: 98%;

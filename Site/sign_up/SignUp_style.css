@@ -7,31 +7,50 @@ Kyle White, Kyle_White@student.uml.edu
  
  */
 
+#content {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
 
+#center-content {
+}
+
+#center-content * {
+	vertical-align: middle;
+}
 
 /*styles spacing and look of entire form*/
 div.content #form_wrapper{
     padding: 5px;
-    border: solid black 3px;
     display: inline-block;
 }
 
 /*styles spacing of the table*/
 div.content #image{
+	display: inline-block;
     margin-left: 20px;
-	float: right;
+	margin-top: 40px;
 }
 
 /*styles the submit button*/
-div.content input{
+div.content input:not([type=submit]){
+	width: 250px;
 	float: right;
 	margin-left: 5px;
 }
 
+#submit_box {
+	width: 150px;
+	float: right;
+	margin-right: 45px;
+}
+
 /*wraps each textbox and its description in a div to keep them together*/
-div.content .form_ele{
+div.content div.form_ele{
     display: block;
     margin-bottom: 9px;
+	text-align: right;
 }
 
 /*styles the error message*/

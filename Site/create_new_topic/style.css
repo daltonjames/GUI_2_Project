@@ -1,6 +1,9 @@
 #body-wrapper {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+}
+#content {
+	width: 80%;
+	margin: 0 auto;
     text-align: center;
 }
 form#new-topic div.wrapper {
@@ -8,6 +11,10 @@ form#new-topic div.wrapper {
     margin: 5px auto;
     padding: 0;
     display: block;
+}
+
+form#new-topic div.wrapper * {
+	vertical-align: middle;
 }
 
 form#new-topic div.wrapper label {
@@ -22,11 +29,8 @@ form#new-topic div.wrapper input {
     width: 515px;
 }
 
-form#new-topic div.large input {
-    height: 100px;
-}
-
-p.temp {
-    font-size: 30px;
-    border: solid red 1px;
+form#new-topic div.wrapper textarea {
+    display: inline-block;
+    width: 515px;
+	resize: none;
 }

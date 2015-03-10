@@ -24,7 +24,8 @@
                 </div>
                 <div id="description-wrapper" class="wrapper large">
                     <label for="short-desc">Short Description</label>
-                    <input id="short-desc" name="short-desc"  type="text" maxlength="250" minlength="1" required="required"/>
+                    <!-- <input id="short-desc" name="short-desc"  type="text" maxlength="250" minlength="1" required="required"/> -->
+					<textarea rows="3" cols="100" name="short-desc" form="new-topic" required="required"></textarea>
                 </div>
                 <div id="tags-wrapper" class="wrapper">
                     <label for="tags-list">Tags</label>
@@ -33,11 +34,12 @@
                 </div>
                 <div id="opening-wrapper" class="wrapper large">
                     <label for="opening-point">Opening Statement</label>
-                    <input id="opening-point" name="opening-point" type="text" maxlength="2000" minlength="1" required="required"/>
+                    <!-- <input id="opening-point" name="opening-point" type="text" maxlength="2000" minlength="1" required="required"/> -->
+					<textarea rows="3" cols="100" name="opening-point" form="new-topic" required="required"></textarea>
                 </div>
-                <button id="preview" form="form-wrapper">Preview</button>
-                <button id="spell-check" form="form-wrapper">Spell Check</button>
-                <input id="new-topic-submit" form="new-topic" type="submit" value="Post"/>
+                <button id="preview" class="btn btn-info" form="form-wrapper">Preview</button>
+                <button id="spell-check" class="btn btn-info" form="form-wrapper">Spell Check</button>
+                <input id="new-topic-submit" class="btn btn-primary" form="new-topic" type="submit" value="Post"/>
             </form>
         </div>
     </div>
