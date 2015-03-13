@@ -16,9 +16,13 @@
 			<div ng-controller="AppCtrl">
 				<div id="left-panel">
 					<div id="navigation">
-						<span><a href="../home">Home</a> |</span>
-						<span>Link |</span>
-						<span>Link</span>
+						<div id="navigation">
+              				<ol class="breadcrumb">
+                				<li><a href="../home">Home</a></li>
+                				<li><a>Link</a></li>
+                				<li><a>Link</a></li>
+              				</ol>
+            			</div>
 					</div>
 					<div id="title">
 						<h1>{{topicData.title}}</h1>
