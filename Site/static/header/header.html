@@ -75,9 +75,9 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Login</h4>
 				</div>
+
 				<div class="modal-body">
-					 
-					 <form id="login_form" action="javascript:void(0)">
+					<form id="login_form" action="javascript:void(0)">
 						<div class="form_ele">
 							<label>Username</label>
 							<input id="Username" name="Username" type="text" tabindex="1" required value="u_name" />
@@ -96,7 +96,7 @@
 			
 				<div class="modal-footer">
 					<button id="submit_login" type="button" class="btn btn-default" >Login</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" id="close-button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -150,7 +150,24 @@
 				
 				
 			});
-			
+
+			// When the close button is clicked, any modal errors are hidden
+			// from the DOM and the form is cleared of any input data
+			$("#close-button").click( function() {
+				$("#modal-error").hide();
+				$("#Username").val('');
+				$("#Ipassword").val('');
+			});
+
+			// When the modal is closed by the user clicking outside of the the
+			// modal, any modal errors are hidden from the DOM and the form is
+			// cleared of any input data
+			$("#myModal").on("hide.bs.modal", function(){
+				$("#modal-error").hide();
+				$("#Username").val('');
+				$("#Ipassword").val('');
+			});
+
 			$("#submit_login").click( function() {
 				//trigger click instead of submit so html5 required attribute works
 				$("#submit-button").trigger("click");
