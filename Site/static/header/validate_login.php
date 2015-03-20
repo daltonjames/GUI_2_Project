@@ -9,11 +9,7 @@
 	
 	$uName = $_GET['Username'];
 	$pWord = $_GET['Ipassword'];
-	#echo "\n";
-	#echo $uName;
-	#echo "\n";
-	#echo $pWord;
-	#echo "\n";
+
 	$select = 'SELECT * FROM alpha_acct WHERE username ="' . $uName . '" AND password = "' . $pWord . '"';
 	#$select = 'SELECT * FROM alpha_acct WHERE username = "u_name" AND password = "pw"';
 	if ( ! $result = $database->query( $select ) ) {
@@ -24,10 +20,14 @@
 	#	$arr[] = $row;
 	#}
 	
-	if ( $result->fetch_assoc() ) {
+	if ( $acct = $result->fetch_assoc() ) {
+		session_start();
+		$_SESSION['bLogged'] = true;
+		$_SESSION['username'] = $uName;
 		echo "match";
 	}
 	else {
 		echo "no match";
 	}
+	
 ?>

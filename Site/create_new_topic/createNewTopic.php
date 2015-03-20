@@ -19,8 +19,7 @@ $time_posted = date( 'Y-m-d H:i:s' );
 
 $opening_comment = $_POST['opening-point'];
 
-// To be changed lated
-$uname = "kdoubledubbs";
+$uname = $_POST['username'];
 
 $sql = 'INSERT INTO alpha_topic_resevoir VALUES ( null, "' . $topic . '" , "' . $description . '" , "' . $time_posted . '" , "' . $time_posted . '" , "' . $opening_comment . '" , "' . $uname . '" ) ';
 

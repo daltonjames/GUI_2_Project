@@ -9,14 +9,16 @@
 //
 
 $(document).ready(function(){
-    
+    window.usernameStr = "";
+	
     $("#new-topic").submit(function(event){
         event.preventDefault();
 		
         //serialzes the form as a string for submission
 		var $this = $(this);
         formData = $this.serialize();
-        
+		formData = formData + '&username=' + usernameStr;
+		
         $.ajax({
             type: 'POST',
             url: 'createNewTopic.php',

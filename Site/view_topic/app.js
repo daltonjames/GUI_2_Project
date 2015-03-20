@@ -54,11 +54,13 @@ App.controller("AppCtrl", function( $scope, $http) {
 });
 
 $(document).ready( function() {
+	window.usernameStr = "";
 	
 	$("#add-comment").submit( function() {
-		var commentStr = $(this).find("textarea").val();
+		var $textarea = $(this).find("textarea")
+		var commentStr = $textarea.val();
 		commentStr = $.trim(commentStr);
-		var commentObj = { commentString : commentStr, postIndex : '999999', poster : 'K2XDubz' };
+		var commentObj = { commentString : commentStr, postIndex : '999999', poster : usernameStr };
 		console.log(commentObj);
 		
 		var postId = window.location.search.substring(1);
@@ -67,7 +69,7 @@ $(document).ready( function() {
 		$.ajax({
 			type: 'POST',
 			url: 'add_comment.php',
-			data: { comment : commentStr, id : postId, user : 'K2XDubz' },
+			data: { comment : commentStr, id : postId, user : usernameStr },
 			success: function(data) {
 				console.log("Success!");
 				console.log(data);
@@ -75,5 +77,6 @@ $(document).ready( function() {
 		});
 		scope.commentsData.push(commentObj);
 		scope.$apply();
+		$textarea.val(""); //clear now posted content inside textarea
 	});
 });

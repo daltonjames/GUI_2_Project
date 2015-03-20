@@ -8,7 +8,7 @@ if ( $database->connect_errno > 0 ) {
    die( '<p>Unable to connect to database [' . $database->connect_error . ']</p>' );
 }
 
-$check_username = $_POST[Username];
+$check_username = $_POST['Username'];
 #echo $check_username;
 #echo "\n";
 	
@@ -26,8 +26,11 @@ if(mysqli_num_rows($result)>=1){
 }
 else	
 {
+	$uName = $_POST['Username'];
+	$pWord = $_POST['Password'];
+	$eMail = $_POST['Email'];
 	
-	$sql = "INSERT INTO alpha_acct (`index`, `username`, `password`, `email`) VALUES ( null, '$_POST[Username]' , '$_POST[Password]' , '$_POST[Email]' )"; 	
+	$sql = 'INSERT INTO alpha_acct (`index`, `username`, `password`, `email`) VALUES ( null, "'. $uName .'" , "'. $pWord .'" , "'. $eMail .'" )'; 	
 
 	if ( ! $result = $database->query( $sql ) ) {
 		die( '<p>Error retrieving data [' . $database->error . ']</p>' );
@@ -35,6 +38,10 @@ else
 	
 	$response['status'] = 'success';
 	$response['message'] = 'acc created';
+	
+	session_start();
+	$_SESSION['bLogged'] = true;
+	$_SESSION['username'] = $uName;
 
 }
 	

@@ -11,7 +11,6 @@ File: SignUp.js
 Description: submits the sign up form adds the new user to the database with php
 */
 
-//extra debugging value //var data
 
 //only allow new accounts if set to true
 var success = true;
@@ -58,17 +57,11 @@ $(document).ready(function() {
 					var p_data = jQuery.parseJSON(data);
 					console.log("p_data = " + p_data);
 					//displays error to the user
-					if( p_data.status == 'error' )
-					{
+					if( p_data.status == 'error' ) {
 						console.log("message = " + p_data.message);
 						$(".error").append("Username already exists");
 					}
-					else //if there is no error start a session so the user is logged in
-					{
-						$.get( "../static/header/start_session.php", formData ).done(function( data ) {
-							console.log("data from page1 = " + data );
-						});
-						
+					else {
 						//bring user to home page after successful login
 						var url = window.location.href;
 						url = url.replace("sign_up", "home");

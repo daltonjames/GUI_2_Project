@@ -11,7 +11,15 @@
 </head>
 <body>
 	<div id="body-wrapper">
-		<?php include ("../static/header/signedInHeader.html"); ?>
+		<?php 
+	        session_start();
+	        if ( (isset($_SESSION['bLogged'])) && (isset($_SESSION['username'])) ) {
+	            include ("../static/header/signedInHeader.html"); 
+	        }
+	        else {
+	            header("Location: ../sign_up");
+	        }
+    	?>
 		<div id="content">
 			<div ng-controller="AppCtrl">
 				<div id="left-panel">

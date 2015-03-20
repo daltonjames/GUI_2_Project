@@ -54,7 +54,7 @@
 								<a id="home-link" href="../home">Red, White & Youth</a>
 							</p>
 						</div>
-						<p id="user-info" class="navbar-text">Signed in as <a href="#" class="navbar-link" id="signedInAs">jpDizzle</a></p>
+						<p id="user-info" class="navbar-text">Signed in as <a href="#" class="navbar-link" id="signedInAs"></a></p>
 						<button type="button" class="btn btn-default navbar-btn" id="phpStuff" >Logout</button>
 					</div>
 				</div>
@@ -65,13 +65,17 @@
 	</div>
 	<script>
 		$(document).ready(function(){
-
+		
 			$.ajax({
 				type: "GET",
 				url: "../static/header/username.php",
 				success: function(data)	{
 					console.log("header data = " + data);
 					$("#signedInAs").append(data);
+					//checks if username is need in javascript
+					if ( window.usernameStr !== undefined ) {
+						window.usernameStr = data;
+					}
 				}
 			});
 			
@@ -81,16 +85,16 @@
 					type: "GET",
 					url: "../static/header/logout.php",
 					success: function(data){
-				
 						console.log("logout stuff");
+						window.location.reload();
+						window.location.href = '../';
 					}	
 					
 						
 				});
 				
-				window.location.href = '../';
 			});
-		});
+		}); //end of doc.ready
 	</script>
 </div>
 </html>
