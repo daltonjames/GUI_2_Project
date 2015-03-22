@@ -18,70 +18,77 @@
 
         <title>Sign Up</title>
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <!-- css link -->
-        <link href="css/SignUp_style.css" rel="stylesheet" type="text/css">
+        <link href="SignUp_style.css" rel="stylesheet" type="text/css">
 
         <!-- js link -->
         <script src="SignUp.js"></script>
 
     </head>
     <body>
+		<?php include ("../static/header/header.html"); ?>
 
-        <!--header-->
+		
+		<div id="content" class="content">
+			
+			<h1>Sign Up</h1>
+			
+			<div id="center-content">
+				<div id="form_wrapper">
 
+					<!-- a form for the sign up info, the action sends the info to a file to be processed-->
+					<form id="SignUp_form" action="javascript:void(0)">
 
-        <h1>Sign Up</h1>
-        
+						<h2>Enter Your Information</h2>
+	 
+						<div class="form_ele">
+							<label>First Name</label>
+							<input id="FirstName" name="FirstName" type="text" tabindex="1" required /> <!--value="f_name"--> 
+						</div>
 
-        <div id="form_wrapper">
+						<div class="form_ele">
+							<label>Last Name</label>
+							<input id="LastName" name="LastName" type="text" tabindex="2" required /><!--value="l_name"--> 
+						</div>
 
-            <!-- a form for the sign up info, the action sends the info to a file to be processed-->
-            <form id="SignUp_form" action="data.txt">
+						<div class="form_ele">
+							<label>Username</label>
+							<input id="Username" name="Username" type="text" tabindex="3" required /><!--value="u_name"--> 
+						</div>
 
-                <h2>Enter Your Information</h2>
+						<div class="form_ele">
+							<label>Email</label>
+							<input id="Email" name="Email" type="email" tabindex="4" required /><!--value="email@email"--> 
+						</div>
+						
+						<div class="form_ele">
+							<label>Password</label>
+							<input id="Password" name="Password" type="password" tabindex="5" required /><!--value="pw"--> 
+						</div>
 
-                <div class="form_ele">
-                    <label>First Name</label>
-                    <input id="FirstName" name="FirstName" type="text" tabindex="1" required />
-                </div>
+						<div class="form_ele">
+							<label>Confirm Password</label>
+							<input id="c_Password" name="c_password" type="password" tabindex="6" required /><!--value="pw"--> 
+						</div>
 
-                <div class="form_ele">
-                    <label>Last Name</label>
-                    <input id="LastName" name="LastName" type="text" tabindex="2" required />
-                </div>
+						
 
-                <div class="form_ele">
-                    <label>Username</label>
-                    <input id="Username" name="Username" type="text" tabindex="3" required />
-                </div>
+						<input id="submit_box" class="btn btn-primary" type="submit" tabindex="7" value="Sign Up" />
+						
+					</form>
+					
+				</div> <!-- End form_wrapper div -->       
 
-                <div class="form_ele">
-                    <label>Email</label>
-                    <input id="Email" name="Email" type="email" tabindex="4" required />
-                </div>
-                
-                <div class="form_ele">
-                    <label>Password</label>
-                    <input id="Password" name="Password" type="password" tabindex="5" required />
-                </div>
-
-                <div class="form_ele">
-                    <label>Confirm Password</label>
-                    <input id="c_Password" name="c_password" type="password" tabindex="6" required />
-                </div>
-
-                
-
-                <input id="submit_box" type="submit" tabindex="7" value="Sign Up" />
-                
-            </form>
-        </div> <!-- End form_wrapper div -->       
-
-        <div id="image">
-            <img src="awesome-american-eagle.jpg" alt="American Eagle" width="252" height="200" />        
-        </div> <!-- end umage div -->   
-
+						
+				<div id="image">
+					<img src="../static/img/awesome-american-eagle.jpg" alt="American Eagle" width="252" height="200" />        
+				</div> <!-- end umage div -->  
+			</div>
+			<p class="error"></p>
+			
+		</div><!--end content div-->
     </body>
 </html>
-
-

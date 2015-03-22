@@ -4,34 +4,36 @@
     <meta charset="UTF-8">
     <title>Red, White &amp; Youth</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!--Link Bootstrap-->
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="body-wrapper">
-    <div class="header">
-        <img src="" class="logo"/>
-        <form id="search-tags" action="javascript:void(0)">
-            <input type="search" placeholder="Search Tags..." form="search-tags"/>
-        </form>
-        <h1>Red, White &amp; Youth</h1>
-        <a href="sign_up">Sign Up</a>
-        <!--Bootstrap Modal Link Below-->
-        <a href="create_new_topic">Login</a>
-    </div>
+	<?php include ("./static/header/header.html"); ?>
     <div id="content">
-        <div id="our-mission">
+        <div class="desc" id="our-mission">
             <h2>Our Mission</h2>
-            <p>BLAH BLAH BLAH</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta malesuada sem, eget consequat lacus sollicitudin eget. Sed ac laoreet dui. Sed pellentesque urna non odio finibus, at convallis nisi pellentesque. Praesent quis magna consequat, venenatis nunc nec, fringilla ante. Nunc a commodo nibh, et faucibus lectus. Donec vel est consectetur, sagittis sem ut, elementum nunc. Phasellus orci ipsum, fringilla vitae est vel, aliquet congue ligula. Praesent orci ipsum, aliquam vitae dui auctor, auctor molestie elit. Curabitur tempor hendrerit varius. In ut mattis nisl. Fusce faucibus dolor eget leo fringilla, sit amet elementum est venenatis. Integer at dui sit amet massa ultrices mollis. Integer finibus mattis laoreet. </p>
         </div>
         <div id="button-wrapper">
-            <a href="www.google.com">Join Now!</a>
+            <!--<a href="./sign_up">Join Now!</a>
             <span>Or</span>
-            <a href="www.bing.com">Check It Out!</a>
+            <a href="www.google.com">Check It Out!</a>-->
+			<div class="jumbotron">
+				<h1>Join the Discussion!</h1>
+				<p>
+					<a class="btn btn-primary btn-lg" href="./sign_up">Join Now!</a>
+					<span>OR</span>
+					<a class="btn btn-primary btn-lg" href="#">Check It Out!</a>
+				</p>
+			</div>
         </div>
-        <div id="how-it-works">
+        <div class="desc" id="how-it-works">
             <h2>How It Works</h2>
-            <p>BLAH BLAH BLAH</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta malesuada sem, eget consequat lacus sollicitudin eget. Sed ac laoreet dui. Sed pellentesque urna non odio finibus, at convallis nisi pellentesque. Praesent quis magna consequat, venenatis nunc nec, fringilla ante. Nunc a commodo nibh, et faucibus lectus. Donec vel est consectetur, sagittis sem ut, elementum nunc. Phasellus orci ipsum, fringilla vitae est vel, aliquet congue ligula. Praesent orci ipsum, aliquam vitae dui auctor, auctor molestie elit. Curabitur tempor hendrerit varius. In ut mattis nisl. Fusce faucibus dolor eget leo fringilla, sit amet elementum est venenatis. Integer at dui sit amet massa ultrices mollis. Integer finibus mattis laoreet. </p>
         </div>
     </div>
 </div>

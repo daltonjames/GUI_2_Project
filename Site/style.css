@@ -1,7 +1,9 @@
 #body-wrapper {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
+    width: 100%;
+}
+#content {
+	margin: 0 auto;
+	text-align: center;
 }
 div.header {
     width: 100%;
@@ -18,4 +20,9 @@ div.header > h1 {
 }
 div.header > a {
     display: inline-block;
+}
+div.desc {
+	width: 80%;
+	margin: 0 auto;
+	text-align: left;
 }

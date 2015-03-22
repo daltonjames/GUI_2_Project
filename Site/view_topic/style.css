@@ -1,0 +1,75 @@
+/*  File:  D:\H-Drive\91-461\461-2014-15f\assn09\MySolution\jmh-assn09.css
+ *  Jesse M. Heines, UMass Lowell Computer Science, heines@cs.uml.edu
+ *  Copyright (c) 2014 by Jesse M. Heines.  All rights reserved.  May be freely 
+ *    copied or excerpted for educational purposes with credit to the author.
+ *  updated by JMH on November 30, 2014 at 9:03 AM
+ */
+ 
+
+/* set font family and font size for entire page */
+body  {
+  font-family: Verdana, Arial, Helvetica, sans-serif ;
+  font-size: 10pt ;
+}
+ul {
+	list-style-type: none;
+}
+#body-wrapper {
+	width: 100%;
+}
+#content {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+#left-panel {
+	width:69%;
+	display: inline-block;
+	float: left;
+}
+#right-panel {
+	width: 28%;
+	display: inline-block;
+	float: right;
+	border: solid black 1px;
+}
+#title {
+	position: relative;
+	overflow: auto;
+	margin-bottom: 10px;
+}
+#title h1 {
+	display: inline-block;
+}
+#back-btn {
+	display: inline-block;
+	position: absolute;
+	right: 0; bottom: 0;
+}
+div.post-background {
+	width: 98%;
+	background-color: white;
+	padding: 3px;
+	border-radius: 5px;
+}
+span.post-background {
+	background-color: white;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-right: 8px;
+	padding-left: 3px;
+	border-radius: 5px;
+	text-decoration: underline;
+}
+#new-comment {
+	overflow: auto;
+}
+#new-comment textarea{
+	width: 100%;
+	margin-bottom: 8px;
+	resize: none;
+}
+#new-comment input[type=submit] {
+	display: block;
+	float: right;
+}

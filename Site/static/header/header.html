@@ -1,0 +1,180 @@
+<html>
+<div id="header-wrapper">
+	<style>
+		#modal-error {
+			display: none;
+			color: red;
+			text-align: center;
+			margin-top: 25px;
+		}
+		div.header-navbar-wrapper {
+			width: 100%;
+			background-color: #EEE;
+		}
+		div.header-content {
+			width: 80%;
+			margin: 0 auto;
+		}
+		#home-link {
+			font-size: 20px;
+			color: inherit;
+			text-decoration: none;
+		}
+	</style>
+	<div class="header-navbar-wrapper">
+		<div class="header-content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Brand</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="navbar-collapse-1">
+						<div class="row">
+							<div class="col-md-4">
+								<form class="navbar-form navbar-left" role="search">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search coming soon">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button">Search</button>
+										</span>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<p class="navbar-text">
+									<a id="home-link" href="http://weblab.cs.uml.edu/~jperreau/rwy/alpha/working">Red, White & Youth</a>
+								</p>
+							</div>
+							<a id="sign-up-btn" href ="./sign_up/" class="btn btn-default navbar-btn" >Sign Up</a>
+							<button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Login</button>
+						</div>
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</div>
+	</div>
+
+	</div>
+	<!--Enter Modal Here -->
+	<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Login</h4>
+				</div>
+
+				<div class="modal-body">
+					<form id="login_form" action="javascript:void(0)">
+						<div class="form_ele">
+							<label>Username</label>
+							<input id="Username" name="Username" type="text" tabindex="1" required value="u_name" />
+						</div>
+						<div class="form_ele">
+							<label>Password</label>
+							<input id="Ipassword" name="Ipassword" type="password" tabindex="2" required value="pw" />
+						</div>	
+					
+						<input type="submit" id="submit-button" class="hidden"/>						
+
+					</form>
+					<p id="modal-error">Invalid Username or Password!</p>
+				
+				</div>
+			
+				<div class="modal-footer">
+					<button id="submit_login" type="button" class="btn btn-default" >Login</button>
+					<button type="button" id="close-button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<script type="text/javascript">
+		$(document).ready( function() {
+
+			var newUrl = "./static/header/validate_login.php";
+			var page = window.location.href;
+			//When page is Sign Up page (NOT public page)
+			if ( page.search("sign_up") !== -1 ) {
+				//change Sign Up Button href
+				$("#sign-up-btn").attr("href", "../sign_up");
+				
+				//change relative path of validate php script
+				newUrl = "." + newUrl;
+			}
+
+			$("#login_form").submit( function(event) {
+			
+				var $this = $(this);
+				formData = $this.serialize();
+				
+				console.log("formData = " + formData );
+				
+				console.log( "Username = " + $("#Username").val() );
+				console.log( "password = " + $("#Ipassword").val() );
+				
+				$.get(newUrl, formData, function (data) {
+					console.log("success");
+					
+					console.log("data = " + data);
+					
+					//looks for the string "no match"
+					//which is what the php script will return if
+					//the login credentials are invalid
+					if ( data.search("no match") === -1 ) {
+						var url = window.location.href;
+						url = url.replace("/sign_up", "");
+						url = url + "home";
+						window.location = url;
+					}
+					//On invalid login
+					else if ( data.search("no match") !== -1 ) {
+						$("#modal-error").show();
+					}
+					
+				});
+				
+				
+			});
+
+			// When the close button is clicked, any modal errors are hidden
+			// from the DOM and the form is cleared of any input data
+			$("#close-button").click( function() {
+				$("#modal-error").hide();
+				$("#Username").val('');
+				$("#Ipassword").val('');
+			});
+
+			// When the modal is closed by the user clicking outside of the the
+			// modal, any modal errors are hidden from the DOM and the form is
+			// cleared of any input data
+			$("#myModal").on("hide.bs.modal", function(){
+				$("#modal-error").hide();
+				$("#Username").val('');
+				$("#Ipassword").val('');
+			});
+
+			$("#submit_login").click( function() {
+				//trigger click instead of submit so html5 required attribute works
+				$("#submit-button").trigger("click");
+			});
+
+		}); //end of doc.ready
+	</script>
+</div>
+
+</html>
