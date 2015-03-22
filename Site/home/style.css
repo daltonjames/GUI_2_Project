@@ -43,4 +43,18 @@ div.clickable:hover {
 	border: solid DarkBlue 2px;
 	background-color: #E6FFFF;
 	margin: -1px;
+	cursor: pointer;
+}
+div.topic-desc {
+	max-height: 140px;
+}
+div.see-more {
+	background-color: red;
+	overflow: hidden;
+}
+p.see-more {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 3px;
+	margin-bottom: 5px;
 }
