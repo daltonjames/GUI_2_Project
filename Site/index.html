@@ -2,6 +2,21 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+	
+	<!-- 
+        Dalton James, Dalton_James@student.uml.edu   
+        Jared Perreault, Jared_Perreault@student.uml.edu
+        Kyle White, Kyle_White@student.uml.edu
+
+        UMass Lowell Computer Science
+        Students in Jesse Heines GUI Programming II
+        
+        File: index.html
+        
+        Description: Landing page for the site
+        
+	-->
+	
     <title>Red, White &amp; Youth</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -12,30 +27,37 @@
 </head>
 <body>
 <div id="body-wrapper">
+
+	<!--includes the header-->
 	<?php include ("./static/header/header.html"); ?>
+
     <div id="content">
+	
+		<!--contains the mission statement (currently just filler)-->
         <div class="desc" id="our-mission">
             <h2>Our Mission</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta malesuada sem, eget consequat lacus sollicitudin eget. Sed ac laoreet dui. Sed pellentesque urna non odio finibus, at convallis nisi pellentesque. Praesent quis magna consequat, venenatis nunc nec, fringilla ante. Nunc a commodo nibh, et faucibus lectus. Donec vel est consectetur, sagittis sem ut, elementum nunc. Phasellus orci ipsum, fringilla vitae est vel, aliquet congue ligula. Praesent orci ipsum, aliquam vitae dui auctor, auctor molestie elit. Curabitur tempor hendrerit varius. In ut mattis nisl. Fusce faucibus dolor eget leo fringilla, sit amet elementum est venenatis. Integer at dui sit amet massa ultrices mollis. Integer finibus mattis laoreet. </p>
         </div>
+		
         <div id="button-wrapper">
-            <!--<a href="./sign_up">Join Now!</a>
-            <span>Or</span>
-            <a href="www.google.com">Check It Out!</a>-->
+            
+			<!-- highlights the Join and check it out buttons-->
 			<div class="jumbotron">
 				<h1>Join the Discussion!</h1>
 				<p>
 					<a class="btn btn-primary btn-lg" href="./sign_up">Join Now!</a>
-					<span>OR</span>
+					<span>OR</span> 
+					<!--Check it out functionality does not exist-->
 					<a class="btn btn-primary btn-lg" href="#">Check It Out!</a>
 				</p>
 			</div>
         </div>
+		<!--A description of how the site works (currently filler)-->
         <div class="desc" id="how-it-works">
             <h2>How It Works</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta malesuada sem, eget consequat lacus sollicitudin eget. Sed ac laoreet dui. Sed pellentesque urna non odio finibus, at convallis nisi pellentesque. Praesent quis magna consequat, venenatis nunc nec, fringilla ante. Nunc a commodo nibh, et faucibus lectus. Donec vel est consectetur, sagittis sem ut, elementum nunc. Phasellus orci ipsum, fringilla vitae est vel, aliquet congue ligula. Praesent orci ipsum, aliquam vitae dui auctor, auctor molestie elit. Curabitur tempor hendrerit varius. In ut mattis nisl. Fusce faucibus dolor eget leo fringilla, sit amet elementum est venenatis. Integer at dui sit amet massa ultrices mollis. Integer finibus mattis laoreet. </p>
         </div>
-    </div>
-</div>
+    </div><!--end content div-->
+</div><!--end body-wrapper div-->
 </body>
 </html>

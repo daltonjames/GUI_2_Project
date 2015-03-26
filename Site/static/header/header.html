@@ -1,6 +1,7 @@
 <html>
 <div id="header-wrapper">
 	<style>
+		/*styles the error message*/
 		#modal-error {
 			display: none;
 			color: red;
@@ -21,6 +22,9 @@
 			text-decoration: none;
 		}
 	</style>
+	
+	<!--header for non logged in pages-->
+	<!--done with bootstrap-->
 	<div class="header-navbar-wrapper">
 		<div class="header-content">
 			<nav class="navbar">
@@ -77,6 +81,7 @@
 				</div>
 
 				<div class="modal-body">
+					<!--form to input username and password to login-->
 					<form id="login_form" action="javascript:void(0)">
 						<div class="form_ele">
 							<label>Username</label>
@@ -90,6 +95,7 @@
 						<input type="submit" id="submit-button" class="hidden"/>						
 
 					</form>
+					<!--error message for the login modal-->
 					<p id="modal-error">Invalid Username or Password!</p>
 				
 				</div>

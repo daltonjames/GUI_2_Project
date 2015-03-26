@@ -21,12 +21,12 @@
         
         Description: Displays user created topics and some info about them
         
-        -->
+	-->
 	
 </head>
 <body ng-app="topicList">
 	<div id="body-wrapper">
-		<!--php include adds the header-->
+		<!--persists the login and includes the header-->
 		<?php 
 			session_start();
 			if ( (isset($_SESSION['bLogged'])) && (isset($_SESSION['username'])) ) {
@@ -39,16 +39,18 @@
 		<div id="content">
 			<div ng-controller="AppCtrl">
 				<div id="left-panel">
+				<!--nav with breadcrumbs included for future scalability-->
 					<div id="navigation">
-              					<ol class="breadcrumb">
-                					<li><a href="../home">Home</a></li>
-                					<li><a>Link</a></li>
-                					<li><a>Link</a></li>
-              					</ol>
+						<ol class="breadcrumb">
+							<li><a href="../home">Home</a></li>
+							<li><a>Link</a></li>
+							<li><a>Link</a></li>
+						</ol>
 					</div>
 					<h1>Topics</h1>
+					
+					<!--sorting options not currently implemented -->
 					<div id="sort-options">
-						<!-- <p>Featured | Newest | Unanswered (Filters Coming soon!)</p> -->
 						<a href="#Coming-Soon!">Featured</a><span> | </span>
 						<a href="#Coming-Soon!">Newest</a><span> | </span>
 						<a href="#Coming-Soon!">Unanswered</a>

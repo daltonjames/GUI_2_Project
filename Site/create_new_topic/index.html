@@ -2,6 +2,20 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+	<!-- 
+        Dalton James, Dalton_James@student.uml.edu   
+        Jared Perreault, Jared_Perreault@student.uml.edu
+        Kyle White, Kyle_White@student.uml.edu
+
+        UMass Lowell Computer Science
+        Students in Jesse Heines GUI Programming II
+        
+        File: create_new_topic/index.html
+        
+        Description: Allows user to add a new topic to the site
+        
+	-->
+	
     <title>Create A New Topic</title>
 
     <!--Link Bootstrap-->
@@ -13,6 +27,8 @@
 </head>
 <body>
 <div id="body-wrapper">
+
+	<!--persists the login and includes the header-->
     <?php 
         session_start();
         if ( (isset($_SESSION['bLogged'])) && (isset($_SESSION['username'])) ) {
@@ -24,6 +40,8 @@
     ?>
     <div id="content">
         <h2>Create A New Topic</h2>
+		
+		<!--div containing form to input the information for the new topic-->
         <div id="form-wrapper" class="wrapper">
             <form id="new-topic" action="javascript:void(0)">
                 <div id="title-wrapper" class="wrapper">
@@ -45,13 +63,15 @@
                     <!-- <input id="opening-point" name="opening-point" type="text" maxlength="2000" minlength="1" required="required"/> -->
 					<textarea rows="3" cols="100" name="opening-point" form="new-topic" required="required"></textarea>
                 </div>
+				<!--preview and spell-check do not have functionality yet-->
                 <button id="preview" class="btn btn-info" form="form-wrapper">Preview</button>
                 <button id="spell-check" class="btn btn-info" form="form-wrapper">Spell Check</button>
-                <input id="new-topic-submit" class="btn btn-primary" form="new-topic" type="submit" value="Post"/>
+                <!--submits the form-->
+				<input id="new-topic-submit" class="btn btn-primary" form="new-topic" type="submit" value="Post"/>
             </form>
-        </div>
-    </div>
-</div>
+        </div><!--end form-wrapper div-->
+    </div><!--end content div-->
+</div><!--end body-wrapper div-->
 
 </body>
 </html>
