@@ -24,20 +24,37 @@ $(document).ready(function() {
 		$(".error").empty();
 		success = true;
 
-		//check if pw matches
-		if($("#Password").val() !== $("#c_Password").val() )
+		//force username to be at least 5 characters 
+		if( $("#username").val().length < 5)
 		{
-			console.log("Passwords do not match");
+			console.log("username is too short");
 			success = false;
-			//shows the user the error
-			$(".error").append("Passwords do not match");
+			$(".error").append("Username must be at least 5 characters long");
 		}
 		else
 		{
-			console.log("The PW matches");
+			//check if pw matches and length > 6	
+			if( $("#Password").val().length < 6 )
+			{
+				console.log("PW too short");
+				$(".error").append("Password must be at least 6 characters long");
+				success = false;
+			}
+			else
+			{
+				if($("#Password").val() !== $("#c_Password").val() )
+				{
+					console.log("Passwords do not match");
+					success = false;
+					//shows the user the error
+					$(".error").append("Passwords do not match");
+				}
+				else
+				{
+					console.log("The PW matches");
+				}
+			}
 		}
-		
-
 		//serialize data to pass to php 
 		var $this = $(this);
 		formData = $this.serialize();
@@ -57,11 +74,17 @@ $(document).ready(function() {
 					var p_data = jQuery.parseJSON(data);
 					console.log("p_data = " + p_data);
 					//displays error to the user
-					if( p_data.status == 'error' ) {
+					if( p_data.status == 'error' )
+					{
 						console.log("message = " + p_data.message);
 						$(".error").append("Username already exists");
 					}
-					else {
+					else //if there is no error start a session so the user is logged in
+					{
+						$.get( "../static/header/start_session.php", formData ).done(function( data ) {
+							console.log("data from page1 = " + data );
+						});
+						
 						//bring user to home page after successful login
 						var url = window.location.href;
 						url = url.replace("sign_up", "home");
