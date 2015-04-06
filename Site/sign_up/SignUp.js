@@ -25,7 +25,7 @@ $(document).ready(function() {
 		success = true;
 
 		//force username to be at least 5 characters 
-		if( $("#username").val().length < 5)
+		if( $("#Username").val().length < 5)
 		{
 			console.log("username is too short");
 			success = false;

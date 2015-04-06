@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	
+	<!-- 
+        Dalton James, Dalton_James@student.uml.edu   
+        Jared Perreault, Jared_Perreault@student.uml.edu
+        Kyle White, Kyle_White@student.uml.edu
+
+        UMass Lowell Computer Science
+        Students in Jesse Heines GUI Programming II
+        
+        File: index.html
+        
+        Description: The users accoun page for the site
+        
+	-->
+	
+    <title>Red, White &amp; Youth</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--Link Bootstrap-->
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="body-wrapper">
+
+	<!--persists the login and includes the header-->
+    <?php 
+        session_start();
+        if ( (isset($_SESSION['bLogged'])) && (isset($_SESSION['username'])) ) {
+            include ("../static/header/signedInHeader.html"); 
+        }
+        else {
+            header("Location: ../sign_up");
+        }
+    ?>
+
+    <div id="content">
+	
+		
+    </div><!--end content div-->
+</div><!--end body-wrapper div-->
+</body>
+</html>
