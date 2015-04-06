@@ -49,7 +49,6 @@ div.topic-desc {
 	max-height: 140px;
 }
 div.see-more {
-	background-color: red;
 	overflow: hidden;
 }
 p.see-more {
@@ -57,4 +56,12 @@ p.see-more {
 	margin: 0 auto;
 	margin-top: 3px;
 	margin-bottom: 5px;
+}
+span.like-spacer {
+	width: 12px;
+	margin-left: 6px;
+	margin-right: 6px;
+}
+a.voter {
+	cursor: pointer;
 }

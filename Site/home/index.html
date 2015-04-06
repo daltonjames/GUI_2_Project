@@ -21,12 +21,12 @@
         
         Description: Displays user created topics and some info about them
         
-	-->
+        -->
 	
 </head>
 <body ng-app="topicList">
 	<div id="body-wrapper">
-		<!--persists the login and includes the header-->
+		<!--php include adds the header-->
 		<?php 
 			session_start();
 			if ( (isset($_SESSION['bLogged'])) && (isset($_SESSION['username'])) ) {
@@ -39,18 +39,16 @@
 		<div id="content">
 			<div ng-controller="AppCtrl">
 				<div id="left-panel">
-				<!--nav with breadcrumbs included for future scalability-->
 					<div id="navigation">
-						<ol class="breadcrumb">
-							<li><a href="../home">Home</a></li>
-							<li><a>Link</a></li>
-							<li><a>Link</a></li>
-						</ol>
+              					<ol class="breadcrumb">
+                					<li><a href="../home">Home</a></li>
+                					<li><a>Link</a></li>
+                					<li><a>Link</a></li>
+              					</ol>
 					</div>
 					<h1>Topics</h1>
-					
-					<!--sorting options not currently implemented -->
 					<div id="sort-options">
+						<!-- <p>Featured | Newest | Unanswered (Filters Coming soon!)</p> -->
 						<a href="#Coming-Soon!">Featured</a><span> | </span>
 						<a href="#Coming-Soon!">Newest</a><span> | </span>
 						<a href="#Coming-Soon!">Unanswered</a>
@@ -59,15 +57,26 @@
 						<!--button to allow user to create a new topic-->
 						<a href="../create_new_topic" class="btn btn-info">Create a New Topic</a>
 					</div>
-					<div id="topic-list">
+					<div id="topic-list" infinite-scroll-directive="loadTopics()">
 						<ul ng-model="topicData">
 
 							<!--loop through each topic in database to show info on each of them-->
 							<li ng-repeat="topic in topicData | orderBy:'+id'" class="well well-sm">
 								<div class="row">
 									<div class="col-md-3">
-										<p>Comments</p>
-										<p>Views</p>
+										<p>
+											<a class="like-ref voter" ng-click="upvote()">
+												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+												<span class="likes-label">{{topic.likes}}</span>
+											</a>
+											<span class="like-spacer"></span>
+											<a class="dis-ref voter" ng-click="downvote()">
+												<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+												<span class="likes-label">{{topic.dislikes}}</span>
+											</a>
+										</p>
+										<p>Comments {{topic.comments}}</p>
+										<p>Views {{topic.views}}</p>
 									</div>
 									<div class="col-md-9">
 										<div class="clickable" data-idcode={{topic.id}} ng-click="navigate($event)">
@@ -102,3 +111,4 @@
 	</div> <!--end body-wrapper div-->
 </body> 
 </html>
+
