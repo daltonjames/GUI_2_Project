@@ -65,3 +65,10 @@ span.like-spacer {
 a.voter {
 	cursor: pointer;
 }
+div.tag-list  {
+	display: inline-block;
+}
+div.tag-list span {
+	display: inline-block;
+	margin: 0;
+}

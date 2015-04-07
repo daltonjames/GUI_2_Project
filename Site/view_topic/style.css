@@ -14,6 +14,9 @@ body  {
 ul {
 	list-style-type: none;
 }
+a {
+	cursor: pointer;
+}
 #body-wrapper {
 	width: 100%;
 }
@@ -72,4 +75,11 @@ span.post-background {
 #new-comment input[type=submit] {
 	display: block;
 	float: right;
+}
+div.tag-wrapper  {
+	display: inline-block;
+}
+div.tag-wrapper span {
+	display: inline-block;
+	margin: 0;
 }

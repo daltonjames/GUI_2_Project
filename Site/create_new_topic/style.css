@@ -34,3 +34,7 @@ form#new-topic div.wrapper textarea {
     width: 515px;
 	resize: none;
 }
+p.tagError {
+	visibility: hidden;
+	color: red;
+}

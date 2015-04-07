@@ -7,11 +7,16 @@ App.controller("AppCtrl", function( $scope, $http) {
 	scope = $scope;
 	
 	$scope.topicData = {};
-	$scope.commentsData = {};
+	$scope.commentsData = [];
 	$scope.error = "";
+	$scope.tagArr = [];
 	
 	var idCode = window.location.search.substring(1);
 	idCode = idCode.split("=")[1];
+	if ( !(idCode.match(/^\d{8}$/)) ) {
+		window.location = "../404";
+		return;
+	}
 	
 	$http.get( "topic_content.php?id=" + idCode ).
 		success( function( data ) {
@@ -19,6 +24,7 @@ App.controller("AppCtrl", function( $scope, $http) {
 			$scope.topicData = data[0][0];
 			$scope.commentsData = data[1];
 			console.log($scope.commentsData);
+			$scope.tagArr = data[3];
 		}).error( function( error ) {
 			console.log("get ERROR");
 			$scope.error = error;
