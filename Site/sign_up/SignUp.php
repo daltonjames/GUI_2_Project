@@ -9,13 +9,11 @@ if ( $database->connect_errno > 0 ) {
 }
 
 $check_username = $_POST['Username'];
-#echo $check_username;
-#echo "\n";
 	
-$sql = 'SELECT username FROM alpha_acct WHERE username="' . $check_username . '"';
+$sql = 'SELECT username FROM beta_acct WHERE username="' . $check_username . '"';
 
 if ( ! $result = $database->query( $sql ) ) {
-   die( '<p>Error retrieving data [' . $database->error . ']</p>' );
+   die( '<p>Error retrieving data from check if exists [' . $database->error . ']</p>' );
 }
 
 $response = array();
@@ -30,7 +28,10 @@ else
 	$pWord = $_POST['Password'];
 	$eMail = $_POST['Email'];
 	
-	$sql = 'INSERT INTO alpha_acct (`index`, `username`, `password`, `email`) VALUES ( null, "'. $uName .'" , "'. $pWord .'" , "'. $eMail .'" )'; 	
+	$sql = 'INSERT INTO beta_acct 
+	(`index`, `firstname`, `lastname`, `username`, `email`, `password`, `phonenumber`, `college`, `state`) 
+	VALUES 
+	( null, "'. $_POST['FirstName'] .'" , "'. $_POST['LastName'] .'", "'. $_POST['Username'] .'" , "'. $_POST['Email'] .'", "'. $_POST['Password'] .'", 0, 0, 0  )'; 	
 
 	if ( ! $result = $database->query( $sql ) ) {
 		die( '<p>Error retrieving data [' . $database->error . ']</p>' );

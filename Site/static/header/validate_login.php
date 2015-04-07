@@ -10,7 +10,7 @@
 	$uName = $_GET['Username'];
 	$pWord = $_GET['Ipassword'];
 
-	$select = 'SELECT * FROM alpha_acct WHERE username ="' . $uName . '" AND password = "' . $pWord . '"';
+	$select = 'SELECT * FROM beta_acct WHERE username ="' . $uName . '" AND password = "' . $pWord . '"';
 	#$select = 'SELECT * FROM alpha_acct WHERE username = "u_name" AND password = "pw"';
 	if ( ! $result = $database->query( $select ) ) {
 		die( 'Error with query' );
