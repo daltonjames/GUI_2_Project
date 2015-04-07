@@ -43,7 +43,7 @@ else
 	session_start();
 	$_SESSION['bLogged'] = true;
 	$_SESSION['username'] = $uName;
-
+	
 }
 	
 	echo json_encode($response);

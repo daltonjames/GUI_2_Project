@@ -13,7 +13,7 @@
         
         File: index.html
         
-        Description: The users accoun page for the site
+        Description: The users account page for the site
         
 	-->
 	
@@ -21,11 +21,16 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!--Link Bootstrap-->
     <link href="style.css" rel="stylesheet" type="text/css">
+	
+	<!-- js link -->
+	<script src="account.js"></script>
+	
 </head>
-<body>
+<body ng-app="acctData">
 <div id="body-wrapper">
 
 	<!--persists the login and includes the header-->
@@ -40,8 +45,22 @@
     ?>
 
     <div id="content">
-	
+		<div ng-controller="AppCtrl">
 		
+			<h1>Profile</h1>
+			
+			<h2>Information</h2>
+			<ul ng-model="acctData">
+				
+				<p>Name = {{accountData.firstname}} {{accountData.lastname}}</p>
+				<p>Username = {{accountData.username}}</p>
+				<p>Email Address = {{accountData.email}} </p>
+				<p>Phone Number = <a>{{accountData.phonenumber}}</a> </p> 
+				<p>College = <a>{{accountData.college}}</a> </p> 
+				<p>Home State = <a>{{accountData.state}}</a> </p> 
+				
+			</ul><!--end acct data-->
+		</div><!--end controller div-->
     </div><!--end content div-->
 </div><!--end body-wrapper div-->
 </body>

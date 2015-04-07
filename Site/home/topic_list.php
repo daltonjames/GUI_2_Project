@@ -11,7 +11,7 @@
 	#selects all topics that exist
 	$select = "SELECT * FROM alpha_topic_resevoir";
     if ( ! $result = $database->query( $select ) ) {
-       die( 'Error retreving data' );
+       die( 'Error retrieving data' );
     }
 	
 	#add all results to an array and json encode it to send it back to the js
