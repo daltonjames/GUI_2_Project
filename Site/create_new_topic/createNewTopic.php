@@ -33,24 +33,15 @@ if( ! $result = $database->query( $sql ) ){
     die( 'POST ERROR');
 }
 
-
-#getId
-$sql = 'SELECT * FROM alpha_topic_resevoir WHERE description = "' . $description . '" AND opening_comment = "' . $opening_comment . '"';
-if( ! $result = $database->query( $sql ) ){
-    die( 'getId ERROR');
-}
-
-$postData = array();
-while ( $row = $result->fetch_assoc() ) {
-   $postData[] = $row;
-}
-$postId = $postData[0]["id"];
-
+$postId = 0;
 #doesn't account for zerofill id
-/*if ( $postId = $database->insert_id == 0 ) {
+if ( ($postId = $database->insert_id) == 0 ) {
 	die( 'insert_id() ERROR' );
 }
-$postId = substr(sprintf("%08d", $postId), 0, 8);*/
+#account for zerofill
+$postId = strval($postId);
+$postId = str_pad($postId, 8, "0", STR_PAD_LEFT);
+
 
 $sql = 'CREATE TABLE post' . $postId . '_comments ( postIndex int(6) ZEROFILL NOT NULL auto_increment, poster text NOT NULL, commentString text NOT NULL, PRIMARY KEY (postIndex), KEY postIndex (postIndex) )';
 if( ! $result = $database->query( $sql ) ){
