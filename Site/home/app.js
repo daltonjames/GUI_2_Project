@@ -4,6 +4,7 @@ var App = angular.module("topicList", []);
 App.controller("AppCtrl", function($scope,$http) {
 	$scope.topicData = [];
 	$scope.error = "";
+	$scope.tagArr = [];
 	//infinite scroll variables
 	$scope.loadDone = true;
 	$scope.totalTopics = 0;
@@ -23,11 +24,20 @@ App.controller("AppCtrl", function($scope,$http) {
 			$scope.loadDone = false;
 			$http.get( "topic_list.php" ).
 				success( function(data) {
+					console.log("data");
 					console.log(data);
 					//updates controller data to trigger view update
-					$scope.topicData = $scope.topicData.concat(data);
-					//TEMP
-					for ( var i=0; i<$scope.topicData.length; i++ ) {
+					$scope.topicData = $scope.topicData.concat(data[0]);
+					$scope.tagArr = data[1];
+					console.log("tagArr: ");
+					console.log($scope.tagArr);
+					//TEMP - for development
+					for ( var i=0; i<($scope.topicData.length); i++ ) {
+						/*if ( $scope.tagArr[i].length === 0 ) {
+							$scope.tagArr[i].push( { tag : "testing1" } );
+							$scope.tagArr[i].push( { tag : "testing2" } );
+							$scope.tagArr[i].push( { tag : "testing3" } );
+						}*/
 						$scope.topicData[i].views = 24123;
 						$scope.topicData[i].comments = 45;
 						$scope.topicData[i].likes = 121;
@@ -117,7 +127,7 @@ App.directive('infiniteScrollDirective', function( $timeout ) {
 			var win = angular.element(window);
 			
 			doc.bind('scroll', function() {
-				if ( window.pageYOffset + window.innerHeight >= win.height() - 100 ) {
+				if ( window.pageYOffset + window.innerHeight >= win.height() - 15 ) {
 					//The code below will be spammed as the user scrolls below the scroll threshold
 					//$scope.loadDone boolean and loadDone custom event are used to prevent spam calls to $scope.loadTopics()
 					console.log("Loading Additional Posts!");
@@ -127,3 +137,4 @@ App.directive('infiniteScrollDirective', function( $timeout ) {
 		});
 	};
 });
+

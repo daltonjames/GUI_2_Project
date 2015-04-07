@@ -20,5 +20,28 @@
 		$postData[] = $row;
 	}
 
-	echo json_encode($postData);
+	$tagArr = array();
+	$numOfComments = 0;
+	foreach( $postData as $post ) {
+		$select = 'SELECT * FROM beta_tags WHERE postId="' . $post['id'] . '"';
+		if ( ! $result = $database->query( $select ) ) {
+		   die( 'Error loading tags' );
+		}
+		$tempArr = array();
+		while ( $row = $result->fetch_assoc() ) {
+		   $tempArr[] = $row;
+		}
+		$tagArr[] = $tempArr;
+		
+		/*$select = 'SELECT COUNT(*) FROM post' . $post['id'] . '_comments';
+		if ( ! $result = $database->query( $select ) ) {
+		   die( 'Error counting tags' );
+		}
+		$numOfComments = $result;*/
+	}
+	
+	$arr = array();
+	$arr[] = $postData;
+	$arr[] = $tagArr;
+	echo json_encode($arr);
 ?>

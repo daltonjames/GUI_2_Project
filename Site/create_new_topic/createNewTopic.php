@@ -1,5 +1,5 @@
 <?php
-
+//TODO: Error check Superglobal $_POST with isset
 
 //connects to database with these username and password credentials
 $username = "jperreau";
@@ -21,11 +21,18 @@ $opening_comment = $_POST['opening-point'];
 
 $uname = $_POST['username'];
 
+//explode is equivalent to JavaScript's String.split()
+$tagArr = array();
+$tagArr = explode(", ", $_POST['tags-list']);
+#echo json_encode($tagArr);
+#echo "\n";
+
 $sql = 'INSERT INTO alpha_topic_resevoir VALUES ( null, "' . $topic . '" , "' . $description . '" , "' . $time_posted . '" , "' . $time_posted . '" , "' . $opening_comment . '" , "' . $uname . '" ) ';
 
 if( ! $result = $database->query( $sql ) ){
     die( 'POST ERROR');
 }
+
 
 #getId
 $sql = 'SELECT * FROM alpha_topic_resevoir WHERE description = "' . $description . '" AND opening_comment = "' . $opening_comment . '"';
@@ -39,11 +46,23 @@ while ( $row = $result->fetch_assoc() ) {
 }
 $postId = $postData[0]["id"];
 
+#doesn't account for zerofill id
+/*if ( $postId = $database->insert_id == 0 ) {
+	die( 'insert_id() ERROR' );
+}
+$postId = substr(sprintf("%08d", $postId), 0, 8);*/
+
 $sql = 'CREATE TABLE post' . $postId . '_comments ( postIndex int(6) ZEROFILL NOT NULL auto_increment, poster text NOT NULL, commentString text NOT NULL, PRIMARY KEY (postIndex), KEY postIndex (postIndex) )';
 if( ! $result = $database->query( $sql ) ){
     die( 'Comment Table ERROR');
 }
 
+foreach( $tagArr as $tag ) {
+	$sql = 'INSERT INTO beta_tags VALUES ( null, "' . $tag . '", "' . $postId . '")';
+	if( ! $result = $database->query( $sql ) ) {
+		die( 'Tag Table ERROR');
+	}
+}
 
 #echo "Success! WOOHOO!"
 echo json_encode($postId);

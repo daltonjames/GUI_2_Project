@@ -13,11 +13,24 @@ $(document).ready(function(){
 	
     $("#new-topic").submit(function(event){
         event.preventDefault();
+		$("p.tagError").css( 'visibility', 'hidden' );
 		
         //serialzes the form as a string for submission
 		var $this = $(this);
         formData = $this.serialize();
 		formData = formData + '&username=' + usernameStr;
+		
+		//Extract the tags
+		var tagArr = $("#tags-list").val().split(", ");
+		var regex = /\W/;
+		console.log(tagArr);
+		tagArr.forEach( function(str, index) {
+			console.log(str);
+			if ( regex.test(str) ) {
+				//tagError();
+				//return;
+			}
+		});
 		
         $.ajax({
             type: 'POST',
@@ -30,8 +43,20 @@ $(document).ready(function(){
 				var url = window.location.href;
 				url = url.split("create_new")[0];
 				url = url + "view_topic?id=" + resultData;
-				window.location = url;
+				//window.location = url;
             }
         });
     });
+	
+	function tagError() {
+		$("p.tagError").css( 'visibility', 'visible' );
+	}
+	
+	/*
+	$("#tags-list").focus( function() {
+		$(this).keypress( function(event) {
+			console.log(event);
+		});
+	});
+	*/
 });

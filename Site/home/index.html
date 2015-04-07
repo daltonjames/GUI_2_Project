@@ -85,7 +85,9 @@
 												<p>{{topic.opening_comment}}</p>
 											</div>
 											<div class="tag-list">
-												<p>Tag1, Tag2, Tag3, Tag4...</p>
+												<span ng-repeat="tagEle in tagArr[$index]">
+													<a>{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
+												</span>
 											</div> <!--end tag-list div-->
 										</div> <!--end clickable div-->
 									</div> <!--end partial row div-->
@@ -111,4 +113,3 @@
 	</div> <!--end body-wrapper div-->
 </body> 
 </html>
-
