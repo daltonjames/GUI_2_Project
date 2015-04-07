@@ -24,13 +24,10 @@ $(document).ready(function() {
 		$(".error").empty();
 		success = true;
 
-<<<<<<< HEAD
 		//check if pw matches
 		if($("#Password").val() !== $("#c_Password").val() )
-=======
 		//force username to be at least 5 characters 
 		if( $("#Username").val().length < 5)
->>>>>>> origin/master
 		{
 			console.log("Passwords do not match");
 			success = false;
