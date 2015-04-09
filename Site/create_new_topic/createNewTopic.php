@@ -27,8 +27,7 @@ $tagArr = explode(", ", $_POST['tags-list']);
 #echo json_encode($tagArr);
 #echo "\n";
 
-$sql = 'INSERT INTO alpha_topic_resevoir VALUES ( null, "' . $topic . '" , "' . $description . '" , "' . $time_posted . '" , "' . $time_posted . '" , "' . $opening_comment . '" , "' . $uname . '" ) ';
-
+$sql = 'INSERT INTO beta_topic_resevoir VALUES ( null, "' . $topic . '" , "' . $description . '" , "' . $time_posted . '" , "' . $time_posted . '" , "' . $opening_comment . '" , "' . $uname . '", 0, 0, 0 ) ';
 if( ! $result = $database->query( $sql ) ){
     die( 'POST ERROR');
 }
@@ -43,9 +42,9 @@ $postId = strval($postId);
 $postId = str_pad($postId, 8, "0", STR_PAD_LEFT);
 
 
-$sql = 'CREATE TABLE post' . $postId . '_comments ( postIndex int(6) ZEROFILL NOT NULL auto_increment, poster text NOT NULL, commentString text NOT NULL, PRIMARY KEY (postIndex), KEY postIndex (postIndex) )';
+$sql = 'CREATE TABLE beta_post' . $postId . '_comments ( postIndex int(6) ZEROFILL NOT NULL auto_increment, poster text NOT NULL, commentString text NOT NULL, timePosted datetime NOT NULL, PRIMARY KEY (postIndex), KEY postIndex (postIndex) )';
 if( ! $result = $database->query( $sql ) ){
-    die( 'Comment Table ERROR');
+    die( 'Comment Table ERROR\n' . $database->error);
 }
 
 foreach( $tagArr as $tag ) {

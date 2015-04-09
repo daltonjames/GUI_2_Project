@@ -13,7 +13,7 @@
        die( 'Unable to connect to database' );
     }
 
-   $select = 'SELECT * FROM alpha_topic_resevoir WHERE id= ' . intval($idCode);
+   $select = 'SELECT * FROM beta_topic_resevoir WHERE id= ' . intval($idCode);
     if ( ! $result = $database->query( $select ) ) {
        die( 'Error loading post from reservoir' );
     }
@@ -22,7 +22,7 @@
        $postData[] = $row;
    }
 	
-	$select = "SELECT * FROM post" . $idCode . "_comments";
+	$select = "SELECT * FROM beta_post" . $idCode . "_comments";
     if ( ! $result = $database->query( $select ) ) {
        die( 'Error loading comments' );
     }

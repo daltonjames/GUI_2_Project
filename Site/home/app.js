@@ -4,11 +4,12 @@ var App = angular.module("topicList", []);
 App.controller("AppCtrl", function($scope,$http) {
 	$scope.topicData = [];
 	$scope.error = "";
-	$scope.tagArr = [];
 	//infinite scroll variables
-	$scope.loadDone = true;
+	$scope.loadDone = true; //boolean to help prevent spam calls to loadTopics()
+	$scope.isLoadEnd = false; //boolean to determine if we have loaded all available topics
 	$scope.totalTopics = 0;
-	$scope.topicRange = 15; //15 topics will be loaded at once
+	$scope.topicRange = 3; //# of topics will be loaded at once
+	$scope.lastId = 0;
 
 	//loadDone event is triggered when the last see-more directive function has run
 	//This also prevents spammed loadTopics calls when we are at the bottom of the page
@@ -19,30 +20,21 @@ App.controller("AppCtrl", function($scope,$http) {
 	
 	//GET retrieves data from php to display for each topic
 	$scope.loadTopics = function() {
-		console.log("loadDone = " + $scope.loadDone);
-		if ( $scope.loadDone ) {
+		if ( $scope.loadDone & !$scope.isLoadEnd ) {
 			$scope.loadDone = false;
-			$http.get( "topic_list.php" ).
+			$http.get( "topic_list.php?limit=" + $scope.topicRange + "&lastId=" + $scope.lastId ).
 				success( function(data) {
-					console.log("data");
-					console.log(data);
-					//updates controller data to trigger view update
-					$scope.topicData = $scope.topicData.concat(data[0]);
-					$scope.tagArr = data[1];
-					console.log("tagArr: ");
-					console.log($scope.tagArr);
-					//TEMP - for development
-					for ( var i=0; i<($scope.topicData.length); i++ ) {
-						/*if ( $scope.tagArr[i].length === 0 ) {
-							$scope.tagArr[i].push( { tag : "testing1" } );
-							$scope.tagArr[i].push( { tag : "testing2" } );
-							$scope.tagArr[i].push( { tag : "testing3" } );
-						}*/
-						$scope.topicData[i].views = 24123;
-						$scope.topicData[i].comments = 45;
-						$scope.topicData[i].likes = 121;
-						$scope.topicData[i].dislikes = 5;
+					if ( data[0].length < 1 ) {
+						console.log("stop loading, end has been reached");
+						$scope.isLoadEnd = true;
+						return;
 					}
+					console.log(data);
+					//updates controller data to trigger view update by appending topicData array
+					$scope.topicData = $scope.topicData.concat(data[0]);
+					//keeps track of the last id used for infinite scroll purposes
+					$scope.lastId = parseInt(data[0][data[0].length-1].id);
+					console.log($scope.lastId);
 				}).error( function(error) {
 					//included for debugging but not shown on page
 					console.log("GET ERROR");
@@ -130,7 +122,6 @@ App.directive('infiniteScrollDirective', function( $timeout ) {
 				if ( window.pageYOffset + window.innerHeight >= win.height() - 15 ) {
 					//The code below will be spammed as the user scrolls below the scroll threshold
 					//$scope.loadDone boolean and loadDone custom event are used to prevent spam calls to $scope.loadTopics()
-					console.log("Loading Additional Posts!");
 					scope.$apply(attr.infiniteScrollDirective);
 				}
 			});

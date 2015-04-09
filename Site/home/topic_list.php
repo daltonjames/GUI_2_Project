@@ -1,6 +1,13 @@
 <?php
+	if ( !isset( $_GET['limit'] ) || !isset( $_GET['lastId'] ) ) {
+		die ("No data received");
+	}
+
     $username = "jperreau";
     $password = "jp6249";
+	
+	$limit = $_GET['limit'];
+	$lastId = $_GET['lastId'];
 
     #username and database name are the same for me
     $database = new mysqli( 'localhost', $username, $password, $username );
@@ -9,7 +16,7 @@
     }
 
 	#selects all topics that exist
-	$select = "SELECT * FROM alpha_topic_resevoir";
+	$select = "SELECT * FROM beta_topic_resevoir WHERE id > " . $lastId . " ORDER BY id LIMIT " . $limit;
     if ( ! $result = $database->query( $select ) ) {
        die( 'Error retrieving data' );
     }
@@ -21,27 +28,26 @@
 	}
 
 	$tagArr = array();
-	$numOfComments = 0;
-	foreach( $postData as $post ) {
+	foreach( $postData as &$post ) {
 		$select = 'SELECT * FROM beta_tags WHERE postId="' . $post['id'] . '"';
 		if ( ! $result = $database->query( $select ) ) {
 		   die( 'Error loading tags' );
 		}
-		$tempArr = array();
 		while ( $row = $result->fetch_assoc() ) {
-		   $tempArr[] = $row;
+		   $tagArr[] = $row;
 		}
-		$tagArr[] = $tempArr;
 		
-		/*$select = 'SELECT COUNT(*) FROM post' . $post['id'] . '_comments';
+		$select = 'SELECT postIndex FROM beta_post' . $post['id'] . '_comments';
 		if ( ! $result = $database->query( $select ) ) {
 		   die( 'Error counting tags' );
 		}
-		$numOfComments = $result;*/
+		$post['commentsNum'] = $result->num_rows;
+		$post['tagList'] = $tagArr;
 	}
 	
 	$arr = array();
 	$arr[] = $postData;
-	$arr[] = $tagArr;
+	$arr[] = $limit;
+	$arr[] = $lastId;
 	echo json_encode($arr);
 ?>

@@ -14,8 +14,9 @@
 	$comment = $_POST['comment'];
 	$id = $_POST['id'];
 	$user = $_POST['user'];
+	$time_posted = date( 'Y-m-d H:i:s' );
 	
-	$insert = 'INSERT INTO post' . $id . '_comments VALUES ( null, "' . $user . '", "' . $comment . '" )' ;
+	$insert = 'INSERT INTO beta_post' . $id . '_comments VALUES ( null, "' . $user . '", "' . $comment . '", "' . $time_posted . '" )' ;
     if ( ! $result = $database->query( $insert ) ) {
 		die( "Error with INSERT" );
     }

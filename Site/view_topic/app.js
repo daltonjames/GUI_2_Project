@@ -79,10 +79,14 @@ $(document).ready( function() {
 			success: function(data) {
 				console.log("Success!");
 				console.log(data);
+				//if comment was successfully added
+				if (data.search("PHP Success!") !== -1) {
+					console.log("comment has been added!");
+					scope.commentsData.push(commentObj);
+					scope.$apply();
+					$textarea.val(""); //clear now posted content inside textarea
+				}
 			}
 		});
-		scope.commentsData.push(commentObj);
-		scope.$apply();
-		$textarea.val(""); //clear now posted content inside textarea
 	});
 });

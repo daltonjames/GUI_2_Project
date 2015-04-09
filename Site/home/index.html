@@ -75,17 +75,17 @@
 												<span class="likes-label">{{topic.dislikes}}</span>
 											</a>
 										</p>
-										<p>Comments {{topic.comments}}</p>
-										<p>Views {{topic.views}}</p>
+										<p>Comments <span>{{topic.commentsNum}}</span></p>
+										<p>Views <span>{{topic.views}}</span></p>
 									</div>
 									<div class="col-md-9">
 										<div class="clickable" data-idcode={{topic.id}} ng-click="navigate($event)">
 											<p>{{topic.title}}</p>
 											<div class="topic-desc" see-more-directive>
-												<p>{{topic.opening_comment}}</p>
+												<p>{{topic.description}}</p>
 											</div>
 											<div class="tag-list">
-												<span ng-repeat="tagEle in tagArr[$index]">
+												<span ng-repeat="tagEle in topic.tagList">
 													<a>{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
 												</span>
 											</div> <!--end tag-list div-->
