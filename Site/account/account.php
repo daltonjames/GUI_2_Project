@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	$username = "jperreau";
 	$password = "jp6249";
 	#username and database name are the same for me
@@ -6,9 +8,10 @@
 	if ( $database->connect_errno > 0 ) {
 	   die( '<p>Unable to connect to database [' . $database->connect_error . ']</p>' );
 	}
+
 	
 	#retrieves all info for the user
-	$select = 'SELECT * FROM beta_acct WHERE username ="u_names"';      #' . u_names . '"';
+	$select = 'SELECT * FROM beta_acct WHERE username ="' . $_SESSION['username'] . '"';      #' . $_SESSION['username']  . '"';
 	if ( ! $result = $database->query( $select ) ) {
 		die( 'username not found in DB' );
 	}	

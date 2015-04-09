@@ -47,17 +47,21 @@
     <div id="content">
 		<div ng-controller="AppCtrl">
 		
-			<h1>Profile</h1>
+			<h1>{{accountData.username}}</h1>
 			
 			<h2>Information</h2>
 			<ul ng-model="acctData">
 				
 				<p>Name = {{accountData.firstname}} {{accountData.lastname}}</p>
-				<p>Username = {{accountData.username}}</p>
 				<p>Email Address = {{accountData.email}} </p>
-				<p>Phone Number = <a>{{accountData.phonenumber}}</a> </p> 
-				<p>College = <a>{{accountData.college}}</a> </p> 
-				<p>Home State = <a>{{accountData.state}}</a> </p> 
+			</ul>
+			
+			<h2>Additional Information</h2>
+			
+			<ul ng-model="acctData">
+				<div>Phone Number = <a ng-click="phoneNumber()" class="update" id="phoneNumber">{{accountData.phonenumber}}</a> <div id="phoneSelect"></div> </div> 
+				<div>College = <a ng-click="college()" class="update" id="college">{{accountData.college}}</a> <div id="collegeSelect"></div> </div> 
+				<div>Home State = <a ng-click="state()" class="update" id="state">{{accountData.state}}</a> <div id="stateSelect"></div> </div> 
 				
 			</ul><!--end acct data-->
 		</div><!--end controller div-->

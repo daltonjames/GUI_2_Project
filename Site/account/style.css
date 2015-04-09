@@ -2,3 +2,32 @@
 a{
 	cursor: pointer;
 }
+
+form{
+	display:inline;
+}
+
+/*all display inlines below make the update forms one line*/
+#stateSelect {
+	display:inline;
+}
+
+#stateSelectForm {
+	display:inline;
+}
+
+#phoneSelect {
+	display:inline;
+}
+
+#phoneSelectForm {
+	display:inline;
+}
+
+#collegeSelect {
+	display:inline;
+}
+
+#collegeSelectForm {
+	display:inline;
+}
