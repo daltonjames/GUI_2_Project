@@ -6,6 +6,9 @@ body  {
 ul {
 	list-style-type: none;
 }
+a {
+	cursor: pointer;
+}
 #body-wrapper {
 	width: 100%;
 }

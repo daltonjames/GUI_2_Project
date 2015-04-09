@@ -86,7 +86,7 @@
 											</div>
 											<div class="tag-list">
 												<span ng-repeat="tagEle in topic.tagList">
-													<a>{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
+													<a class="tagClick" ng-click="tagClick($event)">{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
 												</span>
 											</div> <!--end tag-list div-->
 										</div> <!--end clickable div-->

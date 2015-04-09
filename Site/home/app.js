@@ -45,33 +45,42 @@ App.controller("AppCtrl", function($scope,$http) {
 	}
 	$scope.loadTopics(); //load initial posts
 	
+	//angular.element exposes the fn object of jQuery, allowing for custom jQuery functions to be written
+	angular.element.fn.grandParent = function() {
+		return $(this).parent().parent();
+	}
+	
 	//On click event to handle navigation to each individual topic's view topics page
 	$scope.navigate = function($event) {
+		console.log("nav fired");
+		var url = "../view_topic?id=";
+		var idCode = $event.currentTarget.getAttribute('data-idcode');
+		url = url + idCode;
+		window.location = url;
+	}
+	
+	$scope.tagClick = function($event) {
+		console.log("tag was clicked");
+		$event.stopPropagation(); //stops navigate() from firing
+	}
+	
+	$scope.seeMoreClick = function($event) {
 		var ele = angular.element($event.target);
-		
-		//if click is on See More anchor tag
-		if ( ele.hasClass('see-more') ) {
-			var descDiv = angular.element($event.currentTarget).children('div.topic-desc'); //targets topic-desc div (uses jQuery functionality)
-			console.log(descDiv);
-			//toggle the height of the description
-			if ( descDiv.height() > 140 ) { //if the current state is NOT minimized
-				descDiv.height(140); //sets height to 140 aka minimized
-				ele.text('See More'); //changes anchor tag text
-			}
-			else { //if the current state IS minimized
-				descDiv.css('max-height', 'none'); //eliminates the max height set by css
-				descDiv.height(descDiv.prop('scrollHeight')); //sets height to scrollHeight aka elements actual height
-				ele.text('See Less'); //changes anchor tag text
-			}
+		console.log("see more was clicked");
+		//grandParent() defined above, custom jQuery function
+		var descDiv = angular.element($event.currentTarget).grandParent().children('div.topic-desc'); //targets topic-desc div (uses jQuery functionality)
+		//console.log(descDiv);
+		//toggle the height of the description
+		if ( descDiv.height() > 140 ) { //if the current state is NOT minimized
+			descDiv.height(140); //sets height to 140 aka minimized
+			ele.text('See More'); //changes anchor tag text
 		}
-		
-		//if click is anywhere else on the topic snippet
-		else {
-			var url = "../view_topic?id=";
-			var idCode = $event.currentTarget.getAttribute('data-idcode');
-			url = url + idCode;
-			window.location = url;
+		else { //if the current state IS minimized
+			descDiv.css('max-height', 'none'); //eliminates the max height set by css
+			descDiv.height(descDiv.prop('scrollHeight')); //sets height to scrollHeight aka elements actual height
+			ele.text('See Less'); //changes anchor tag text
 		}
+		$event.stopPropagation(); //stops navigate() from firing
 	}
 	
 	//Voting functions
@@ -87,7 +96,7 @@ App.controller("AppCtrl", function($scope,$http) {
 }); //End of App.controller()
 
 //Check if each ng-repeat element overflow's (greater than max-height) and adds 'See More' functionality
-App.directive('seeMoreDirective', function( $timeout ) {
+App.directive('seeMoreDirective', function( $timeout, $compile ) {
 	return function(scope, element) {
 		var ele = angular.element(element); //wrapped jQuery object (done by angular)
 		
@@ -100,7 +109,8 @@ App.directive('seeMoreDirective', function( $timeout ) {
 				//overflow detected
 				console.log('overflow detected');
 				ele.addClass('see-more'); //adds overflow: hidden to css
-				var seeMore = angular.element("<p class='see-more'><a class='see-more'>See More</a></p>"); //adds See More/See Less button
+				var seeMore = $compile(angular.element( //$compile binds angular element to scope, allowing the ng-click to function
+					"<p class='see-more'><a class='see-more' ng-click='seeMoreClick($event)'>See More</a></p>"))(scope); //adds See More/See Less button
 				element.after(seeMore); //inserts into the DOM right after #topic-desc div (and before the Tag List)
 			}
 			//checks for last element
@@ -128,4 +138,3 @@ App.directive('infiniteScrollDirective', function( $timeout ) {
 		});
 	};
 });
-
