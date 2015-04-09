@@ -12,8 +12,13 @@
     if ( $database->connect_errno > 0 ) {
        die( 'Unable to connect to database' );
     }
+	
+	$sql = 'UPDATE beta_topic_resevoir SET views=views+1 WHERE id=' . intval($idCode);
+	if ( ! $result = $database->query( $sql ) ) {
+       die( 'Error incrementing views' );
+    }
 
-   $select = 'SELECT * FROM beta_topic_resevoir WHERE id= ' . intval($idCode);
+    $select = 'SELECT * FROM beta_topic_resevoir WHERE id= ' . intval($idCode);
     if ( ! $result = $database->query( $select ) ) {
        die( 'Error loading post from reservoir' );
     }
