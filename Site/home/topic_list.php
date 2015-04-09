@@ -27,8 +27,8 @@
 		$postData[] = $row;
 	}
 
-	$tagArr = array();
 	foreach( $postData as &$post ) {
+		$tagArr = array();
 		$select = 'SELECT * FROM beta_tags WHERE postId="' . $post['id'] . '"';
 		if ( ! $result = $database->query( $select ) ) {
 		   die( 'Error loading tags' );
