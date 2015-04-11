@@ -59,7 +59,7 @@
 			<h2>Additional Information</h2>
 			
 			<ul ng-model="acctData">
-				<div>Phone Number = <a ng-click="phoneNumber()" class="update" id="phoneNumber">{{accountData.phonenumber}}</a> <div id="phoneSelect"></div> </div> 
+				<div>Phone Number = <a ng-click="phoneNumber($compile)" class="update" id="phoneNumber">{{accountData.phonenumber}}</a> <div id="phoneSelect"></div> </div> 
 				<div>College = <a ng-click="college()" class="update" id="college">{{accountData.college}}</a> <div id="collegeSelect"></div> </div> 
 				<div>Home State = <a ng-click="state()" class="update" id="state">{{accountData.state}}</a> <div id="stateSelect"></div> </div> 
 				

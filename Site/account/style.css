@@ -1,3 +1,14 @@
+//alligns all of the text to the center of the page
+body{
+	width: 100%;
+}
+
+#content{
+	width: 80%;
+	margin: auto 0;
+	text-align: center;
+}
+
 /*changes a tags to a pointer cursor*/
 a{
 	cursor: pointer;
@@ -31,3 +42,4 @@ form{
 #collegeSelectForm {
 	display:inline;
 }
+
