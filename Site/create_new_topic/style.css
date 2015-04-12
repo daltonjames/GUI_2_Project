@@ -38,3 +38,9 @@ p.tagError {
 	visibility: hidden;
 	color: red;
 }
+
+#modal_button{
+    position: relative;
+	top: -46px;
+    left: 95px;
+}

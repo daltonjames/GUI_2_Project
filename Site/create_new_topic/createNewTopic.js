@@ -43,7 +43,7 @@ $(document).ready(function(){
 				var url = window.location.href;
 				url = url.split("create_new")[0];
 				url = url + "view_topic?id=" + resultData;
-				//window.location = url;
+				window.location = url;
             }
         });
     });

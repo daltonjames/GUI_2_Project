@@ -47,13 +47,38 @@
                 </div>
 				<p class="tagError">There's an error with your tags. Please check your formatting!</p>
 				<p class="tagError">Letters and Numbers only are allowed! Separate each tag with a comma and space!</p>
-                <button id="preview" class="btn btn-info" form="form-wrapper">Preview</button>
-                <button id="spell-check" class="btn btn-info" form="form-wrapper">Spell Check</button>
-                <input id="new-topic-submit" class="btn btn-primary" form="new-topic" type="submit" value="Post"/>
-            </form>
+                <input id="new-topic-submit" class="btn btn-primary btn-lg" form="new-topic" type="submit" value="Post"/>
+				<!-- <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cancel</button> -->
+							
+			</form>
+			
+			<button id="modal_button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cancel</button>
         </div>
     </div>
 </div>
+
+	<!--Enter Modal Here -->
+	<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<!-- <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Login</h4>
+				</div> -->
+
+				<div class="modal-body">
+					<p> Are you sure? </p>
+					<p>(All data will be lost)</p>				
+				</div>
+			
+				<div class="modal-footer">
+					<button class="btn btn-primary btn-lg" onclick="location.href='../home'">Yes</button>
+					<button type="button" id="close-button" class="btn btn-info btn-lg" data-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
