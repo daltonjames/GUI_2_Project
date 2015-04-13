@@ -3,6 +3,9 @@
 var App = angular.module("topicList", []);
 App.controller("AppCtrl", function($scope,$http) {
 	$scope.topicData = [];
+	$scope.timePosted = 0;
+	$scope.tStamp = 0;
+	$scope.date = 0;
 	$scope.error = "";
 	//infinite scroll variables
 	$scope.loadDone = true; //boolean to help prevent spam calls to loadTopics()
@@ -35,6 +38,20 @@ App.controller("AppCtrl", function($scope,$http) {
 					//keeps track of the last id used for infinite scroll purposes
 					$scope.lastId = parseInt(data[0][data[0].length-1].id);
 					console.log($scope.lastId);
+					// gets the time stamp of when the post was created
+					$scope.timePosted = data[0][1].time_posted;
+					console.log("Original " + $scope.timePosted);
+					// Splits the time stamp into (Year, Month, Day, Hour, Minute, Second)
+					$scope.tStamp = $scope.timePosted.split(/[- :]/);
+					console.log($scope.tStamp);
+					// Formats into words for easier user reading
+					$scope.date = new Date($scope.tStamp[0], 
+										   $scope.tStamp[1]-1, 
+										   $scope.tStamp[2], 
+										   $scope.tStamp[3], 
+										   $scope.tStamp[4], 
+										   $scope.tStamp[5]);
+					console.log($scope.date);
 				}).error( function(error) {
 					//included for debugging but not shown on page
 					console.log("GET ERROR");

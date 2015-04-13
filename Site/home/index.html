@@ -89,8 +89,11 @@
 													<a class="tagClick" ng-click="tagClick($event)">{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
 												</span>
 											</div> <!--end tag-list div-->
+											<div id="timePosted">
+												<p><span>Date Posted: </span>{{date | date : 'medium' }}</p>
+											</div> <!-- end timePosted div-->
 										</div> <!--end clickable div-->
-									</div> <!--end partial row div-->
+									</div> <!--end partial row div-->	
 								</div> <!--end row div-->
 							</li> <!--end angular loop-->
 						</ul> <!--end topic list-->
