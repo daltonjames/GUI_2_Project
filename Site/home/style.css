@@ -18,12 +18,12 @@ a {
 	margin-top: 25px;
 }
 #left-panel {
-	width:69%;
+	width: 85%;
 	display: inline-block;
 	float: left;
 }
 #right-panel {
-	width: 28%;
+	width: 5%;
 	display: inline-block;
 	float: right;
 	border: solid black 1px;
