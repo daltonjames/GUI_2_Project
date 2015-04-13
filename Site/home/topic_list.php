@@ -43,11 +43,13 @@
 		}
 		$post['commentsNum'] = $result->num_rows;
 		$post['tagList'] = $tagArr;
+        $post['time_posted'] = DateTime::createFromFormat( 'Y-m-d H:i:s' , $post['time_posted'] )->format('M j, Y G:i' );
 	}
 	
 	$arr = array();
 	$arr[] = $postData;
 	$arr[] = $limit;
 	$arr[] = $lastId;
+    $arr[] = $post['time_posted'];
 	echo json_encode($arr);
 ?>

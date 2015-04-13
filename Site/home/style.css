@@ -75,3 +75,9 @@ div.tag-list span {
 	display: inline-block;
 	margin: 0;
 }
+div#timePosted {
+	float: right;
+	font-size: 7pt;
+	color: gray;
+	padding: 7px;
+}

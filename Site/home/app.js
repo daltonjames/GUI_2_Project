@@ -39,7 +39,7 @@ App.controller("AppCtrl", function($scope,$http) {
 					$scope.lastId = parseInt(data[0][data[0].length-1].id);
 					console.log($scope.lastId);
 					// gets the time stamp of when the post was created
-					$scope.timePosted = data[0][1].time_posted;
+					$scope.timePosted = data[0][0].time_posted;
 					console.log("Original " + $scope.timePosted);
 					// Splits the time stamp into (Year, Month, Day, Hour, Minute, Second)
 					$scope.tStamp = $scope.timePosted.split(/[- :]/);
