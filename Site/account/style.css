@@ -1,12 +1,18 @@
-//alligns all of the text to the center of the page
-body{
-	width: 100%;
-}
 
 #content{
-	width: 80%;
-	margin: auto 0;
-	text-align: center;
+	margin-left: 20px;
+}
+
+#return_button{
+	float: right;
+}
+	
+td{
+	border: 15px solid white;
+}
+
+.first_column{
+	font-weight: bold;
 }
 
 /*changes a tags to a pointer cursor*/
@@ -43,3 +49,9 @@ form{
 	display:inline;
 }
 
+h1{
+	font-weight: bold;
+	font-size: 48px;
+	color: green;
+	display: inline;
+}

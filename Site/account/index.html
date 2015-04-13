@@ -49,13 +49,20 @@
 		
 			<h1>{{accountData.username}}</h1>
 			
-			<h2>Information</h2>
-			<ul ng-model="acctData">
-				
-				<p>Name = {{accountData.firstname}} {{accountData.lastname}}</p>
-				<p>Email Address = {{accountData.email}} </p>
-			</ul>
+			<a id="return_button" href="../home" class="btn btn-info">Back to Topics</a>
 			
+			<h2>Personal Information</h2>
+			<table ng-model="acctData">
+				<tr>
+					<td class="first_column" >Name</td>
+					<td>{{accountData.firstname}} {{accountData.lastname}}</td>
+				</tr>
+				<tr>
+					<td class="first_column" >Email Address</td>
+					<td>{{accountData.email}} </td>
+				</tr>
+			</table>
+			<!-- 
 			<h2>Additional Information</h2>
 			
 			<ul ng-model="acctData">
@@ -63,7 +70,7 @@
 				<div>College = <a ng-click="college()" class="update" id="college">{{accountData.college}}</a> <div id="collegeSelect"></div> </div> 
 				<div>Home State = <a ng-click="state()" class="update" id="state">{{accountData.state}}</a> <div id="stateSelect"></div> </div> 
 				
-			</ul><!--end acct data-->
+			</ul><!--end additional acct data-->
 		</div><!--end controller div-->
     </div><!--end content div-->
 </div><!--end body-wrapper div-->
