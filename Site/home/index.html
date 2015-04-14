@@ -50,18 +50,18 @@
 					<div id="sort-options">
 						<!-- <p>Featured | Newest | Unanswered (Filters Coming soon!)</p> -->
 						<span class="radio-group">
-							<input type="radio" name="philter" ng-model="filterList" ng-value="{}" >
-							<input type="radio" name="philter" ng-model="orderList" ng-value="'+id'" >
+							<input type="radio" ng-model="filterList" ng-value="{}" >
+							<input type="radio" ng-model="orderList" ng-value="'+id'" >
 							<span>Oldest</span>
 						</span><span> | </span>
 						<span class="radio-group">
-							<input type="radio" name="philter" ng-model="filterList" ng-value="{}" >
-							<input type="radio" name="philter" ng-model="orderList" ng-value="'-id'" >
+							<input type="radio" ng-model="filterList" ng-value="{}" >
+							<input type="radio" ng-model="orderList" ng-value="'-id'" >
 							<span>Newest</span>
 						</span><span> | </span>
 						<span class="radio-group">
-							<input type="radio" name="philter" ng-model="filterList" ng-value="{commentsNum : 0}" >
-							<input type="radio" name="philter" ng-model="orderList" ng-value="'+id'" >
+							<input type="radio" ng-model="filterList" ng-value="{commentsNum : 0}" >
+							<input type="radio" ng-model="orderList" ng-value="'+id'" >
 							<span>Unanswered</span>
 						</span>
 					</div>
@@ -99,7 +99,8 @@
 											</div>
 											<div class="tag-list">
 												<span ng-repeat="tagEle in topic.tagList">
-													<a class="tagClick" ng-click="tagClick($event)">{{tagEle.tag}}</a><span ng-if="!($last)">,&nbsp;</span>
+													<a class="tagClick" ng-click="tagClick($event)">{{tagEle.tag}}</a>
+													<span ng-if="!($last)">,&nbsp;</span>
 												</span>
 											</div> <!--end tag-list div-->
 											<div id="timePosted">

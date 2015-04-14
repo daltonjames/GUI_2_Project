@@ -18,11 +18,12 @@ App.controller("AppCtrl", function($scope,$http) {
 		$scope.loadDone = true;
 	});
 	
-	//Multi-filterling system (made to look like hrefs)
+	//Multi-filtering system (made to look like hrefs)
 	angular.element('span.radio-group span').bind( 'click', function() {
 		console.log('radio-group clicked');
-		$(this).sibling('input')[0].click();
-		$(this).sibling('input')[1].click();
+		$(this).sibling('input').each( function( i, ele ) {
+			ele.click();
+		});
 		angular.element('span.radio-group span').removeClass('radio-group-selected');
 		$(this).addClass('radio-group-selected');
 	});
