@@ -3,14 +3,11 @@
 var App = angular.module("topicList", []);
 App.controller("AppCtrl", function($scope,$http) {
 	$scope.topicData = [];
-	$scope.timePosted = 0;
-	$scope.tStamp = 0;
-	$scope.date = 0;
 	$scope.error = "";
 	//infinite scroll variables
 	$scope.loadDone = true; //boolean to help prevent spam calls to loadTopics()
 	$scope.isLoadEnd = false; //boolean to determine if we have loaded all available topics
-	$scope.totalTopics = 0;
+	$scope.topicCount = 0;
 	$scope.topicRange = 3; //# of topics will be loaded at once
 	$scope.lastId = 0;
 
@@ -19,6 +16,15 @@ App.controller("AppCtrl", function($scope,$http) {
 	angular.element(document).bind( 'loadDone', function() {
 		console.log('Load has finished!');
 		$scope.loadDone = true;
+	});
+	
+	//Multi-filterling system (made to look like hrefs)
+	angular.element('span.radio-group span').bind( 'click', function() {
+		console.log('radio-group clicked');
+		$(this).sibling('input')[0].click();
+		$(this).sibling('input')[1].click();
+		angular.element('span.radio-group span').removeClass('radio-group-selected');
+		$(this).addClass('radio-group-selected');
 	});
 	
 	//GET retrieves data from php to display for each topic
@@ -37,21 +43,8 @@ App.controller("AppCtrl", function($scope,$http) {
 					$scope.topicData = $scope.topicData.concat(data[0]);
 					//keeps track of the last id used for infinite scroll purposes
 					$scope.lastId = parseInt(data[0][data[0].length-1].id);
-					console.log($scope.lastId);
-					// gets the time stamp of when the post was created
-					$scope.timePosted = data[0][0].time_posted;
-					console.log("Original " + $scope.timePosted);
-					// Splits the time stamp into (Year, Month, Day, Hour, Minute, Second)
-					$scope.tStamp = $scope.timePosted.split(/[- :]/);
-					console.log($scope.tStamp);
-					// Formats into words for easier user reading
-					$scope.date = new Date($scope.tStamp[0], 
-										   $scope.tStamp[1]-1, 
-										   $scope.tStamp[2], 
-										   $scope.tStamp[3], 
-										   $scope.tStamp[4], 
-										   $scope.tStamp[5]);
-					console.log($scope.date);
+					$scope.topicCount += data[0].length;
+					console.log($scope.topicCount);
 				}).error( function(error) {
 					//included for debugging but not shown on page
 					console.log("GET ERROR");
@@ -67,9 +60,42 @@ App.controller("AppCtrl", function($scope,$http) {
 		return $(this).parent().parent();
 	}
 	
+	angular.element.fn.sibling = function(arg) {
+		return $(this).parent().find(arg);
+	}
+	
+	//reloads the topic list, if the list is currently full (entire database) attempt to load a few more posts (checking for updates)
+	$scope.reloadList = function() {
+		//stores current window location when reload button is click
+		var location = window.pageYOffset;
+		
+		//temp storage of constraint variables
+		var tempRange = $scope.topicRange;
+		var tempLoadEnd = $scope.isLoadEnd;
+		
+		//if the list is full, attempt to load few more posts (checking for updates)
+		$scope.topicRange = ($scope.isLoadEnd) ? $scope.topicCount + $scope.topicRange : $scope.topicCount;
+		
+		//reset or temp values of constraint variables to allow for a successful loadTopics() call
+		$scope.isLoadEnd = false;	$scope.loadDone = true;
+		$scope.topicCount = 0;		$scope.lastId = 0;
+		$scope.topicData = [];
+		
+		$scope.loadTopics();
+
+		//reset constraint variables to their original values
+		$scope.topicRange = tempRange;
+		$scope.isLoadEnd = tempLoadEnd;
+		
+		//scroll user to the Reload List button just had just clicked
+		//(Default behavior scrolls to the top of page)
+		angular.element('body').animate({
+			scrollTop: location
+		});
+	}
+	
 	//On click event to handle navigation to each individual topic's view topics page
 	$scope.navigate = function($event) {
-		console.log("nav fired");
 		var url = "../view_topic?id=";
 		var idCode = $event.currentTarget.getAttribute('data-idcode');
 		url = url + idCode;

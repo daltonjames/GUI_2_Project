@@ -21,6 +21,12 @@
 		die( "Error with INSERT" );
     }
 	
+	$newdate = date( 'Y-m-d H:i:s' );
+	$update = 'UPDATE beta_topic_resevoir SET time_updated="' . $newdate . '" WHERE id="' . $id . '"';
+    if ( ! $result = $database->query( $update ) ) {
+		die( "Error with UPDATE" . $database->error );
+    }
+	
 	echo "PHP Success! Post Id = " . $id;
 	#$params = json_decode(file_get_contents('php://input'), true);
 	#echo $params;

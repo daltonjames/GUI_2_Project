@@ -49,22 +49,35 @@
 					<h1>Topics</h1>
 					<div id="sort-options">
 						<!-- <p>Featured | Newest | Unanswered (Filters Coming soon!)</p> -->
-						<a href="#Coming-Soon!">Featured</a><span> | </span>
-						<a href="#Coming-Soon!">Newest</a><span> | </span>
-						<a href="#Coming-Soon!">Unanswered</a>
+						<span class="radio-group">
+							<input type="radio" name="philter" ng-model="filterList" ng-value="{}" >
+							<input type="radio" name="philter" ng-model="orderList" ng-value="'+id'" >
+							<span>Oldest</span>
+						</span><span> | </span>
+						<span class="radio-group">
+							<input type="radio" name="philter" ng-model="filterList" ng-value="{}" >
+							<input type="radio" name="philter" ng-model="orderList" ng-value="'-id'" >
+							<span>Newest</span>
+						</span><span> | </span>
+						<span class="radio-group">
+							<input type="radio" name="philter" ng-model="filterList" ng-value="{commentsNum : 0}" >
+							<input type="radio" name="philter" ng-model="orderList" ng-value="'+id'" >
+							<span>Unanswered</span>
+						</span>
 					</div>
 					<div class="add-new-wrapper">
 						<!--button to allow user to create a new topic-->
 						<a href="../create_new_topic" class="btn btn-info">Create a New Topic</a>
+						<button type="button" class="btn btn-default" ng-click="reloadList()">Reload List</button>
 					</div>
 					<div id="topic-list" infinite-scroll-directive="loadTopics()">
-						<ul ng-model="topicData">
+						<ul>
 
 							<!--loop through each topic in database to show info on each of them-->
-							<li ng-repeat="topic in topicData | orderBy:'+id'" class="well well-sm">
+							<li ng-repeat="topic in topicData | orderBy: orderList | filter: filterList" class="well well-sm">
 								<div class="row">
 									<div class="col-md-3">
-										<p>
+										<!--<p>
 											<a class="like-ref voter" ng-click="upvote()">
 												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 												<span class="likes-label">{{topic.likes}}</span>
@@ -74,7 +87,7 @@
 												<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
 												<span class="likes-label">{{topic.dislikes}}</span>
 											</a>
-										</p>
+										</p>-->
 										<p>Comments <span>{{topic.commentsNum}}</span></p>
 										<p>Views <span>{{topic.views}}</span></p>
 									</div>
@@ -90,7 +103,7 @@
 												</span>
 											</div> <!--end tag-list div-->
 											<div id="timePosted">
-												<p>{{topic.time_posted}}</p>
+												<p>Last Updated: {{topic.time_updated}}</p>
 											</div> <!-- end timePosted div-->
 										</div> <!--end clickable div-->
 									</div> <!--end partial row div-->	
@@ -102,6 +115,7 @@
 					<!--add bottom nav button for creating new topic-->
 					<div class="add-new-wrapper">
 						<a href="../create_new_topic" class="btn btn-info">Create a New Topic</a>
+						<button type="button" class="btn btn-default" ng-click="reloadList()">Reload List</button>
 					</div>
 				</div> <!--end left-panel div-->
 				

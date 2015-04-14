@@ -18,14 +18,23 @@ App.controller("AppCtrl", function( $scope, $http) {
 		return;
 	}
 	
+	var isNumber = function(arg) {
+		return !isNaN(parseFloat(arg));
+	}
+	
 	$http.get( "topic_content.php?id=" + idCode ).
 		success( function( data ) {
+		
+			if ( data[0].length < 1 /*|| data.search("Error loading") !== -1*/ || jQuery.type(data) === "string" ) {
+				window.location = "../404";
+			}
 			console.log(data);
 			$scope.topicData = data[0][0];
 			$scope.commentsData = data[1];
 			console.log($scope.commentsData);
 			$scope.tagArr = data[3];
 		}).error( function( error ) {
+			window.location = "../404";
 			console.log("get ERROR");
 			$scope.error = error;
 		});

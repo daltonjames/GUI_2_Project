@@ -2,6 +2,7 @@ body  {
 	width: 100%;
 	font-family: Verdana, Arial, Helvetica, sans-serif ;
 	font-size: 10pt ;
+	overflow-y: scroll;
 }
 ul {
 	list-style-type: none;
@@ -28,13 +29,33 @@ a {
 	float: right;
 	border: solid black 1px;
 }
+span.radio-group  input {
+	display: none;
+}
+span.radio-group  span {
+	background-color: transparent;
+	color: #337AB7;
+	text-decoration: none;
+	cursor: pointer;
+}
+span.radio-group span:hover, span.radio-group span:focus {
+    color: #005580;
+    text-decoration: underline;
+}
+span.radio-group  span.radio-group-selected,
+span.radio-group span.radio-group-selected:hover
+span.radio-group span.radio-group-selected:focus {
+	color: #333;
+	text-decoration: underline;
+}
 div.add-new-wrapper {
 	overflow: auto;
 }
-div.add-new-wrapper a {
+div.add-new-wrapper a, div.add-new-wrapper button {
 	display: inline-block;
 	float: right;
 	margin-bottom: 10px;
+	margin-left: 8px;
 }
 div.clickable {
 	background-color: white;
