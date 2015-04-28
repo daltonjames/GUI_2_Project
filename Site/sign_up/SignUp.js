@@ -26,26 +26,34 @@ $(document).ready(function() {
 
 		//check if pw matches
 		if($("#Password").val() !== $("#c_Password").val() )
-		//force username to be at least 5 characters 
-		if( $("#Username").val().length < 5)
 		{
 			console.log("Passwords do not match");
 			success = false;
 			//shows the user the error
 			$(".error").append("Passwords do not match");
+			return false;
 		}
 		else
 		{
 			console.log("The PW matches");
 		}
 		
-
+		
+		//force Password to be at least 5 characters 
+		if( $("#Password").val().length < 5)
+		{
+			success = false;
+			//shows the user the error
+			$(".error").append("Passwords must be at least 5 characters long");
+			return false;
+		}
+		
 		//serialize data to pass to php 
 		var $this = $(this);
 		formData = $this.serialize();
 
-		console.log("");
-		console.log(formData);
+		//console.log("");
+		//console.log(formData);
 
 		if(success == true)
 		{

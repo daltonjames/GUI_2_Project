@@ -46,17 +46,17 @@
 	 
 						<div class="form_ele">
 							<label>First Name</label>
-							<input id="FirstName" name="FirstName" type="text" tabindex="1" required /> <!--value="f_name"--> 
+							<input id="FirstName" name="FirstName" type="text" tabindex="1" maxlength="15" required /> <!--value="f_name"--> 
 						</div>
 
 						<div class="form_ele">
 							<label>Last Name</label>
-							<input id="LastName" name="LastName" type="text" tabindex="2" required /><!--value="l_name"--> 
+							<input id="LastName" name="LastName" type="text" tabindex="2" maxlength="15" required /><!--value="l_name"--> 
 						</div>
 
 						<div class="form_ele">
 							<label>Username</label>
-							<input id="Username" name="Username" type="text" tabindex="3" required /><!--value="u_name"--> 
+							<input id="Username" name="Username" type="text" tabindex="3" maxlength="15" required /><!--value="u_name"--> 
 						</div>
 
 						<div class="form_ele">
@@ -66,12 +66,12 @@
 						
 						<div class="form_ele">
 							<label>Password</label>
-							<input id="Password" name="Password" type="password" tabindex="5" required /><!--value="pw"--> 
+							<input id="Password" name="Password" type="password" tabindex="5" pattern=".{5,}" required title="5 characters minimum" /><!--value="pw"--> 
 						</div>
 
 						<div class="form_ele">
 							<label>Confirm Password</label>
-							<input id="c_Password" name="c_password" type="password" tabindex="6" required /><!--value="pw"--> 
+							<input id="c_Password" name="c_password" type="password" tabindex="6" pattern=".{5,}" required title="5 characters minimum" /><!--value="pw"--> 
 						</div>
 
 						

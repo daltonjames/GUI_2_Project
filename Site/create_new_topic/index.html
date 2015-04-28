@@ -28,16 +28,16 @@
             <form id="new-topic" action="javascript:void(0)">
                 <div id="title-wrapper" class="wrapper">
                     <label for="topic-title">Topic Title</label>
-                    <span><input id="topic-title" name="topic-title" type="text" minlength="3" required="required"/></span>
+                    <span><input id="topic-title" name="topic-title" type="text" pattern=".{3,20}" required title="3 to 20 characters" /></span>
                 </div>
                 <div id="description-wrapper" class="wrapper large">
                     <label for="short-desc">Short Description</label>
                     <!-- <input id="short-desc" name="short-desc"  type="text" maxlength="250" minlength="1" required="required"/> -->
-					<textarea rows="3" cols="100" name="short-desc" form="new-topic" required="required"></textarea>
+					<textarea rows="3" cols="100" name="short-desc" form="new-topic" pattern=".{3,2000}" required title="3 to 2000 characters" ></textarea>
                 </div>
                 <div id="tags-wrapper" class="wrapper">
                     <label for="tags-list">Tags</label>
-                    <input id="tags-list" name="tags-list" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" required="required"/>
+                    <input id="tags-list" name="tags-list" type="text" minlength="0" placeholder="Enter commas between tags: tag1, tag2 tag3, etc" pattern=".{3,20}" required title="3 to 20 characters"/>
                     <!-- Add regular expressions formatter to check for tag1, tag2, tag3 pattern with pattern attribute -->
                 </div>
                 <div id="opening-wrapper" class="wrapper large">

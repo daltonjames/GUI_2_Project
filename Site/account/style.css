@@ -1,7 +1,19 @@
+body{
+	width: 100%;
+}
 
 #content{
-	margin-left: 20px;
+	width: 65%;
+	margin: 0 auto;
+	text-align: center;
 }
+
+#content > div{
+	margin-left: 50px;
+	width: 75%;
+ 	text-align: left;
+}
+
 
 #return_button{
 	float: right;
