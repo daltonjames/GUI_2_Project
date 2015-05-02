@@ -8,7 +8,7 @@ App.controller("AppCtrl", function($scope,$http) {
 	$scope.loadDone = true; //boolean to help prevent spam calls to loadTopics()
 	$scope.isLoadEnd = false; //boolean to determine if we have loaded all available topics
 	$scope.topicCount = 0;
-	$scope.topicRange = 3; //# of topics will be loaded at once
+	$scope.topicRange = 6; //# of topics will be loaded at once
 	$scope.lastId = 0;
 
 	//loadDone event is triggered when the last see-more directive function has run
